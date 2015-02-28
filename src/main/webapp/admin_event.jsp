@@ -30,11 +30,33 @@
        response.setHeader("Location", site);
     }
 
+    for (int i=0; i <
+
     List<Event> events = (List<Event>) request.getAttribute("known_events");
 
     if (events.size() > 0) {
 %>
 <h3>Current Events</h3>
+<table border=1>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Location</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Team Size</th>
+    </tr>
+    <c:forEach items="${known_events}" var="event">
+        <tr>
+            <td>${event.name}</td>
+            <td>${event.description}</td>
+            <td>${event.location}</td>
+            <td>${event.start_date}</td>
+            <td>${event.end_date}</td>
+            <td>${eventTeamSize}</td>
+        </tr>
+    </c:forEach>
+</table>
 <% } else { %>
 <h4>No events in the database</h4>
 <% } %>

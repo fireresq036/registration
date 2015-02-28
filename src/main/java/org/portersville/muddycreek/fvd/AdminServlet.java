@@ -33,7 +33,7 @@ public class AdminServlet extends HttpServlet {
   private static final String GET_USERS = "get_users";
   private EventProcessing eventProcessor = new EventProcessing();
 
-  AdminServlet() {
+  public AdminServlet() {
     super();
 
   }
@@ -67,7 +67,9 @@ public class AdminServlet extends HttpServlet {
       }
 
       try {
+        log.log(Level.INFO, "events size: {0}", new Integer[]{events.size()});
         events.add(eventProcessor.AddEvent(req, user));
+        log.log(Level.INFO, "2events size: {0}", new Integer[]{events.size()});
         req.setAttribute("known_events", events);
       } catch (ParseException e) {
         resp.sendRedirect(
