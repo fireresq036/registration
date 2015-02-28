@@ -1,0 +1,815 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building fishing-registration 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ fishing-registration ---
+[INFO] 
+[INFO] --- maven-protoc-plugin:0.3.2:compile (default) @ fishing-registration ---
+[INFO] Compiling 1 proto file(s) to /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ fishing-registration ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home/mark/wip/fishing-registration/src/main/resources
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ fishing-registration ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to /home/mark/wip/fishing-registration/target/fishing-registration-1.0-SNAPSHOT/WEB-INF/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[13,26] cannot find symbol
+  symbol:   class MessageOrBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[207,38] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[218,31] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[563,45] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[592,47] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1115,26] cannot find symbol
+  symbol:   class MessageOrBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1293,38] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1304,31] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1657,45] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1686,47] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2219,26] cannot find symbol
+  symbol:   class MessageOrBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2238,24] cannot find symbol
+  symbol:   class ProtocolStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2257,24] cannot find symbol
+  symbol:   class ProtocolStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2405,38] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2416,31] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2464,32] cannot find symbol
+  symbol:   class LazyStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2468,31] cannot find symbol
+  symbol:   class ProtocolStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2493,32] cannot find symbol
+  symbol:   class LazyStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2497,31] cannot find symbol
+  symbol:   class ProtocolStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2682,45] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2711,47] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2935,34] cannot find symbol
+  symbol:   class LazyStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2945,33] cannot find symbol
+  symbol:   class ProtocolStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3028,34] cannot find symbol
+  symbol:   class LazyStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3038,33] cannot find symbol
+  symbol:   class ProtocolStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3122,34] cannot find symbol
+  symbol:   class SingleFieldBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3223,34] cannot find symbol
+  symbol:   class SingleFieldBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3250,26] cannot find symbol
+  symbol:   class MessageOrBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3409,38] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3420,31] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3653,45] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3682,47] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3923,34] cannot find symbol
+  symbol:   class SingleFieldBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[4024,34] cannot find symbol
+  symbol:   class SingleFieldBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[4047,34] cannot find symbol
+  symbol:   class RepeatedFieldBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[4263,34] cannot find symbol
+  symbol:   class RepeatedFieldBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[13,26] cannot find symbol
+  symbol:   class MessageOrBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[207,38] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[218,31] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[563,45] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[592,47] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1115,26] cannot find symbol
+  symbol:   class MessageOrBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1293,38] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1304,31] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1657,45] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1686,47] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2219,26] cannot find symbol
+  symbol:   class MessageOrBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2238,24] cannot find symbol
+  symbol:   class ProtocolStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2257,24] cannot find symbol
+  symbol:   class ProtocolStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2405,38] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2416,31] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2464,32] cannot find symbol
+  symbol:   class LazyStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2468,31] cannot find symbol
+  symbol:   class ProtocolStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2493,32] cannot find symbol
+  symbol:   class LazyStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2497,31] cannot find symbol
+  symbol:   class ProtocolStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2682,45] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2711,47] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2935,34] cannot find symbol
+  symbol:   class LazyStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2945,33] cannot find symbol
+  symbol:   class ProtocolStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3028,34] cannot find symbol
+  symbol:   class LazyStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3038,33] cannot find symbol
+  symbol:   class ProtocolStringList
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3122,34] cannot find symbol
+  symbol:   class SingleFieldBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3223,34] cannot find symbol
+  symbol:   class SingleFieldBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3250,26] cannot find symbol
+  symbol:   class MessageOrBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3409,38] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3420,31] cannot find symbol
+  symbol:   class Parser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3653,45] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3682,47] cannot find symbol
+  symbol:   class BuilderParent
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3923,34] cannot find symbol
+  symbol:   class SingleFieldBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[4024,34] cannot find symbol
+  symbol:   class SingleFieldBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[4047,34] cannot find symbol
+  symbol:   class RepeatedFieldBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[4263,34] cannot find symbol
+  symbol:   class RepeatedFieldBuilder
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[102,7] constructor GeneratedMessage in class com.google.protobuf.GeneratedMessage cannot be applied to given types;
+  required: no arguments
+  found: com.google.protobuf.GeneratedMessage.Builder<capture#1 of ?>
+  reason: actual and formal argument lists differ in length
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[119,9] getUnknownFields() in org.portersville.muddycreek.vfd.registration.Registration.Event cannot override getUnknownFields() in com.google.protobuf.GeneratedMessage
+  overridden method is final
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[139,20] cannot find symbol
+  symbol:   method parseUnknownField(com.google.protobuf.CodedInputStream,com.google.protobuf.UnknownFieldSet.Builder,com.google.protobuf.ExtensionRegistryLite,int)
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[186,16] cannot find symbol
+  symbol:   method setUnfinishedMessage(org.portersville.muddycreek.vfd.registration.Registration.Event)
+  location: variable e of type com.google.protobuf.InvalidProtocolBufferException
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[189,28] cannot find symbol
+  symbol:   method setUnfinishedMessage(org.portersville.muddycreek.vfd.registration.Registration.Event)
+  location: class com.google.protobuf.InvalidProtocolBufferException
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[192,9] cannot find symbol
+  symbol:   method makeExtensionsImmutable()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[203,11] cannot find symbol
+  symbol:   method ensureFieldAccessorsInitialized(java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Event>,java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Event.Builder>)
+  location: variable internal_static_registration_Event_fieldAccessorTable of type com.google.protobuf.GeneratedMessage.FieldAccessorTable
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[208,32] cannot find symbol
+  symbol:   class AbstractParser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[217,5] method does not override or implement a method from a supertype
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[257,15] cannot find symbol
+  symbol:   method isValidUtf8()
+  location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[299,15] cannot find symbol
+  symbol:   method isValidUtf8()
+  location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[341,15] cannot find symbol
+  symbol:   method isValidUtf8()
+  location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[498,19] cannot find symbol
+  symbol: method writeReplace()
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[495,5] method does not override or implement a method from a supertype
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[561,5] method does not override or implement a method from a supertype
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[570,25] org.portersville.muddycreek.vfd.registration.Registration.Event.Builder is not abstract and does not override abstract method internalGetResult() in com.google.protobuf.GeneratedMessage.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[582,13] cannot find symbol
+  symbol:   method ensureFieldAccessorsInitialized(java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Event>,java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Event.Builder>)
+  location: variable internal_static_registration_Event_fieldAccessorTable of type com.google.protobuf.GeneratedMessage.FieldAccessorTable
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[597,49] cannot find symbol
+  symbol:   variable alwaysUseFieldBuilders
+  location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[597,12] illegal start of type
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[677,9] cannot find symbol
+  symbol:   method onBuilt()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[698,11] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[703,11] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[708,11] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[735,94] cannot find symbol
+  symbol:   method getUnfinishedMessage()
+  location: variable e of type com.google.protobuf.InvalidProtocolBufferException
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[765,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[774,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[794,17] cannot find symbol
+  symbol:   method isValidUtf8()
+  location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[828,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[837,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[850,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[870,17] cannot find symbol
+  symbol:   method isValidUtf8()
+  location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[904,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[913,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[926,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[946,17] cannot find symbol
+  symbol:   method isValidUtf8()
+  location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[980,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[989,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1002,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1025,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1034,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1057,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1066,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1089,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1098,9] cannot find symbol
+  symbol:   method onChanged()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1196,7] constructor GeneratedMessage in class com.google.protobuf.GeneratedMessage cannot be applied to given types;
+  required: no arguments
+  found: com.google.protobuf.GeneratedMessage.Builder<capture#2 of ?>
+  reason: actual and formal argument lists differ in length
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1213,9] getUnknownFields() in org.portersville.muddycreek.vfd.registration.Registration.Address cannot override getUnknownFields() in com.google.protobuf.GeneratedMessage
+  overridden method is final
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1233,20] cannot find symbol
+  symbol:   method parseUnknownField(com.google.protobuf.CodedInputStream,com.google.protobuf.UnknownFieldSet.Builder,com.google.protobuf.ExtensionRegistryLite,int)
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Address
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1272,16] cannot find symbol
+  symbol:   method setUnfinishedMessage(org.portersville.muddycreek.vfd.registration.Registration.Address)
+  location: variable e of type com.google.protobuf.InvalidProtocolBufferException
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1275,28] cannot find symbol
+  symbol:   method setUnfinishedMessage(org.portersville.muddycreek.vfd.registration.Registration.Address)
+  location: class com.google.protobuf.InvalidProtocolBufferException
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1278,9] cannot find symbol
+  symbol:   method makeExtensionsImmutable()
+  location: class org.portersville.muddycreek.vfd.registration.Registration.Address
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1289,11] cannot find symbol
+  symbol:   method ensureFieldAccessorsInitialized(java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Address>,java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Address.Builder>)
+  location: variable internal_static_registration_Address_fieldAccessorTable of type com.google.protobuf.GeneratedMessage.FieldAccessorTable
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1294,32] cannot find symbol
+  symbol:   class AbstractParser
+  location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1303,5] method does not override or implement a method from a supertype
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1328,15] cannot find symbol
+  symbol:   method isValidUtf8()
+  location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1370,15] cannot find symbol
+  symbol:   method isValidUtf8()
+  location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1412,15] cannot find symbol
+  symbol:   method isValidUtf8()
+  location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1454,15] cannot find symbol
+  symbol:   method isValidUtf8()
+  location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1496,15] cannot find symbol
+  symbol:   method isValidUtf8()
+  location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1592,19] cannot find symbol
+  symbol: method writeReplace()
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1589,5] method does not override or implement a method from a supertype
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1655,5] method does not override or implement a method from a supertype
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1664,25] org.portersville.muddycreek.vfd.registration.Registration.Address.Builder is not abstract and does not override abstract method internalGetResult() in com.google.protobuf.GeneratedMessage.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1676,13] cannot find symbol
+  symbol:   method ensureFieldAccessorsInitialized(java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Address>,java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Address.Builder>)
+  location: variable internal_static_registration_Address_fieldAccessorTable of type com.google.protobuf.GeneratedMessage.FieldAccessorTable
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1691,49] cannot find symbol
+  symbol:   variable alwaysUseFieldBuilders
+  location: class com.google.protobuf.GeneratedMessage
+[INFO] 136 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.888 s
+[INFO] Finished at: 2015-02-19T22:05:44-05:00
+[INFO] Final Memory: 14M/228M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project fishing-registration: Compilation failure: Compilation failure:
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[13,26] cannot find symbol
+[ERROR] symbol:   class MessageOrBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[207,38] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[218,31] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[563,45] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[592,47] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1115,26] cannot find symbol
+[ERROR] symbol:   class MessageOrBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1293,38] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1304,31] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1657,45] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1686,47] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2219,26] cannot find symbol
+[ERROR] symbol:   class MessageOrBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2238,24] cannot find symbol
+[ERROR] symbol:   class ProtocolStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2257,24] cannot find symbol
+[ERROR] symbol:   class ProtocolStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2405,38] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2416,31] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2464,32] cannot find symbol
+[ERROR] symbol:   class LazyStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2468,31] cannot find symbol
+[ERROR] symbol:   class ProtocolStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2493,32] cannot find symbol
+[ERROR] symbol:   class LazyStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2497,31] cannot find symbol
+[ERROR] symbol:   class ProtocolStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2682,45] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2711,47] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2935,34] cannot find symbol
+[ERROR] symbol:   class LazyStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2945,33] cannot find symbol
+[ERROR] symbol:   class ProtocolStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3028,34] cannot find symbol
+[ERROR] symbol:   class LazyStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3038,33] cannot find symbol
+[ERROR] symbol:   class ProtocolStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3122,34] cannot find symbol
+[ERROR] symbol:   class SingleFieldBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3223,34] cannot find symbol
+[ERROR] symbol:   class SingleFieldBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3250,26] cannot find symbol
+[ERROR] symbol:   class MessageOrBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3409,38] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3420,31] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3653,45] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3682,47] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3923,34] cannot find symbol
+[ERROR] symbol:   class SingleFieldBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[4024,34] cannot find symbol
+[ERROR] symbol:   class SingleFieldBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[4047,34] cannot find symbol
+[ERROR] symbol:   class RepeatedFieldBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[4263,34] cannot find symbol
+[ERROR] symbol:   class RepeatedFieldBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[13,26] cannot find symbol
+[ERROR] symbol:   class MessageOrBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[207,38] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[218,31] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[563,45] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[592,47] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1115,26] cannot find symbol
+[ERROR] symbol:   class MessageOrBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1293,38] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1304,31] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1657,45] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1686,47] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2219,26] cannot find symbol
+[ERROR] symbol:   class MessageOrBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2238,24] cannot find symbol
+[ERROR] symbol:   class ProtocolStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2257,24] cannot find symbol
+[ERROR] symbol:   class ProtocolStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2405,38] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2416,31] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2464,32] cannot find symbol
+[ERROR] symbol:   class LazyStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2468,31] cannot find symbol
+[ERROR] symbol:   class ProtocolStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2493,32] cannot find symbol
+[ERROR] symbol:   class LazyStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2497,31] cannot find symbol
+[ERROR] symbol:   class ProtocolStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2682,45] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2711,47] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2935,34] cannot find symbol
+[ERROR] symbol:   class LazyStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[2945,33] cannot find symbol
+[ERROR] symbol:   class ProtocolStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3028,34] cannot find symbol
+[ERROR] symbol:   class LazyStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3038,33] cannot find symbol
+[ERROR] symbol:   class ProtocolStringList
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3122,34] cannot find symbol
+[ERROR] symbol:   class SingleFieldBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3223,34] cannot find symbol
+[ERROR] symbol:   class SingleFieldBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3250,26] cannot find symbol
+[ERROR] symbol:   class MessageOrBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3409,38] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3420,31] cannot find symbol
+[ERROR] symbol:   class Parser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3653,45] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3682,47] cannot find symbol
+[ERROR] symbol:   class BuilderParent
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[3923,34] cannot find symbol
+[ERROR] symbol:   class SingleFieldBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[4024,34] cannot find symbol
+[ERROR] symbol:   class SingleFieldBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[4047,34] cannot find symbol
+[ERROR] symbol:   class RepeatedFieldBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[4263,34] cannot find symbol
+[ERROR] symbol:   class RepeatedFieldBuilder
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[102,7] constructor GeneratedMessage in class com.google.protobuf.GeneratedMessage cannot be applied to given types;
+[ERROR] required: no arguments
+[ERROR] found: com.google.protobuf.GeneratedMessage.Builder<capture#1 of ?>
+[ERROR] reason: actual and formal argument lists differ in length
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[119,9] getUnknownFields() in org.portersville.muddycreek.vfd.registration.Registration.Event cannot override getUnknownFields() in com.google.protobuf.GeneratedMessage
+[ERROR] overridden method is final
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[139,20] cannot find symbol
+[ERROR] symbol:   method parseUnknownField(com.google.protobuf.CodedInputStream,com.google.protobuf.UnknownFieldSet.Builder,com.google.protobuf.ExtensionRegistryLite,int)
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[186,16] cannot find symbol
+[ERROR] symbol:   method setUnfinishedMessage(org.portersville.muddycreek.vfd.registration.Registration.Event)
+[ERROR] location: variable e of type com.google.protobuf.InvalidProtocolBufferException
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[189,28] cannot find symbol
+[ERROR] symbol:   method setUnfinishedMessage(org.portersville.muddycreek.vfd.registration.Registration.Event)
+[ERROR] location: class com.google.protobuf.InvalidProtocolBufferException
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[192,9] cannot find symbol
+[ERROR] symbol:   method makeExtensionsImmutable()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[203,11] cannot find symbol
+[ERROR] symbol:   method ensureFieldAccessorsInitialized(java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Event>,java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Event.Builder>)
+[ERROR] location: variable internal_static_registration_Event_fieldAccessorTable of type com.google.protobuf.GeneratedMessage.FieldAccessorTable
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[208,32] cannot find symbol
+[ERROR] symbol:   class AbstractParser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[217,5] method does not override or implement a method from a supertype
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[257,15] cannot find symbol
+[ERROR] symbol:   method isValidUtf8()
+[ERROR] location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[299,15] cannot find symbol
+[ERROR] symbol:   method isValidUtf8()
+[ERROR] location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[341,15] cannot find symbol
+[ERROR] symbol:   method isValidUtf8()
+[ERROR] location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[498,19] cannot find symbol
+[ERROR] symbol: method writeReplace()
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[495,5] method does not override or implement a method from a supertype
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[561,5] method does not override or implement a method from a supertype
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[570,25] org.portersville.muddycreek.vfd.registration.Registration.Event.Builder is not abstract and does not override abstract method internalGetResult() in com.google.protobuf.GeneratedMessage.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[582,13] cannot find symbol
+[ERROR] symbol:   method ensureFieldAccessorsInitialized(java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Event>,java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Event.Builder>)
+[ERROR] location: variable internal_static_registration_Event_fieldAccessorTable of type com.google.protobuf.GeneratedMessage.FieldAccessorTable
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[597,49] cannot find symbol
+[ERROR] symbol:   variable alwaysUseFieldBuilders
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[597,12] illegal start of type
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[677,9] cannot find symbol
+[ERROR] symbol:   method onBuilt()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[698,11] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[703,11] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[708,11] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[735,94] cannot find symbol
+[ERROR] symbol:   method getUnfinishedMessage()
+[ERROR] location: variable e of type com.google.protobuf.InvalidProtocolBufferException
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[765,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[774,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[794,17] cannot find symbol
+[ERROR] symbol:   method isValidUtf8()
+[ERROR] location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[828,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[837,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[850,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[870,17] cannot find symbol
+[ERROR] symbol:   method isValidUtf8()
+[ERROR] location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[904,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[913,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[926,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[946,17] cannot find symbol
+[ERROR] symbol:   method isValidUtf8()
+[ERROR] location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[980,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[989,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1002,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1025,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1034,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1057,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1066,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1089,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1098,9] cannot find symbol
+[ERROR] symbol:   method onChanged()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Event.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1196,7] constructor GeneratedMessage in class com.google.protobuf.GeneratedMessage cannot be applied to given types;
+[ERROR] required: no arguments
+[ERROR] found: com.google.protobuf.GeneratedMessage.Builder<capture#2 of ?>
+[ERROR] reason: actual and formal argument lists differ in length
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1213,9] getUnknownFields() in org.portersville.muddycreek.vfd.registration.Registration.Address cannot override getUnknownFields() in com.google.protobuf.GeneratedMessage
+[ERROR] overridden method is final
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1233,20] cannot find symbol
+[ERROR] symbol:   method parseUnknownField(com.google.protobuf.CodedInputStream,com.google.protobuf.UnknownFieldSet.Builder,com.google.protobuf.ExtensionRegistryLite,int)
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Address
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1272,16] cannot find symbol
+[ERROR] symbol:   method setUnfinishedMessage(org.portersville.muddycreek.vfd.registration.Registration.Address)
+[ERROR] location: variable e of type com.google.protobuf.InvalidProtocolBufferException
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1275,28] cannot find symbol
+[ERROR] symbol:   method setUnfinishedMessage(org.portersville.muddycreek.vfd.registration.Registration.Address)
+[ERROR] location: class com.google.protobuf.InvalidProtocolBufferException
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1278,9] cannot find symbol
+[ERROR] symbol:   method makeExtensionsImmutable()
+[ERROR] location: class org.portersville.muddycreek.vfd.registration.Registration.Address
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1289,11] cannot find symbol
+[ERROR] symbol:   method ensureFieldAccessorsInitialized(java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Address>,java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Address.Builder>)
+[ERROR] location: variable internal_static_registration_Address_fieldAccessorTable of type com.google.protobuf.GeneratedMessage.FieldAccessorTable
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1294,32] cannot find symbol
+[ERROR] symbol:   class AbstractParser
+[ERROR] location: package com.google.protobuf
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1303,5] method does not override or implement a method from a supertype
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1328,15] cannot find symbol
+[ERROR] symbol:   method isValidUtf8()
+[ERROR] location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1370,15] cannot find symbol
+[ERROR] symbol:   method isValidUtf8()
+[ERROR] location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1412,15] cannot find symbol
+[ERROR] symbol:   method isValidUtf8()
+[ERROR] location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1454,15] cannot find symbol
+[ERROR] symbol:   method isValidUtf8()
+[ERROR] location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1496,15] cannot find symbol
+[ERROR] symbol:   method isValidUtf8()
+[ERROR] location: variable bs of type com.google.protobuf.ByteString
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1592,19] cannot find symbol
+[ERROR] symbol: method writeReplace()
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1589,5] method does not override or implement a method from a supertype
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1655,5] method does not override or implement a method from a supertype
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1664,25] org.portersville.muddycreek.vfd.registration.Registration.Address.Builder is not abstract and does not override abstract method internalGetResult() in com.google.protobuf.GeneratedMessage.Builder
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1676,13] cannot find symbol
+[ERROR] symbol:   method ensureFieldAccessorsInitialized(java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Address>,java.lang.Class<org.portersville.muddycreek.vfd.registration.Registration.Address.Builder>)
+[ERROR] location: variable internal_static_registration_Address_fieldAccessorTable of type com.google.protobuf.GeneratedMessage.FieldAccessorTable
+[ERROR] /home/mark/wip/fishing-registration/target/generated-sources/protobuf/java/org/portersville/muddycreek/vfd/registration/Registration.java:[1691,49] cannot find symbol
+[ERROR] symbol:   variable alwaysUseFieldBuilders
+[ERROR] location: class com.google.protobuf.GeneratedMessage
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

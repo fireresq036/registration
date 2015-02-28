@@ -1,0 +1,13 @@
+<tr>
+  <td>Phone</td>
+  <td>${fn:escapeXml(team_data.captain.phone[0])}</td>
+</tr>
+<tr>
+  <td>Address</td>
+  <td>${fn:escapeXml(team_data.captain.address[0].street1)}</br>
+    ${fn:escapeXml(team_data.captain.address[0].street2)}</br>
+    ${fn:escapeXml(team_data.captain.address[0].city)}
+    ${fn:escapeXml(team_data.captain.address[0].state)}
+    ${fn:escapeXml(team_data.captain.address[0].zip)}
+  </td>
+</tr>

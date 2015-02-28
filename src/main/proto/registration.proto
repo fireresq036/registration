@@ -1,0 +1,34 @@
+package registration;
+option java_package = "org.portersville.muddycreek.vfd.registration";
+
+message Event {
+    optional int32 id = 1;
+    optional string name = 2;
+    optional string descritpion = 3;
+    optional string location = 4;
+    optional int64 start_date = 5;
+    optional int64 end_date = 6;
+    optional int32 team_size = 7;
+}
+
+message Address {
+    optional string street1 = 1;
+    optional string street2 = 2;
+    optional string city = 3;
+    optional string state = 4;
+    optional string zip = 5;
+}
+
+message Person {
+    optional string name = 1;
+    repeated string email = 2;
+    repeated string phone = 3;
+    repeated Address address = 4;
+}
+
+message Team {
+    required string name = 1;
+    required Person captain = 2;
+    repeated Person member = 3;
+//    add event here
+}
