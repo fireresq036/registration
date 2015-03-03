@@ -6,11 +6,11 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     <servlet>
         <servlet-name>register</servlet-name>
-        <servlet-class>org.portersville.muddycreek.fvd.RegisterServlet</servlet-class>
+        <servlet-class>org.portersville.muddycreek.vfd.servlet.RegisterServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>admin</servlet-name>
-        <servlet-class>org.portersville.muddycreek.fvd.AdminServlet</servlet-class>
+        <servlet-class>org.portersville.muddycreek.vfd.servlet.AdminServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>register</servlet-name>

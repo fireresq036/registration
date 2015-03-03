@@ -1,4 +1,4 @@
-package org.portersville.muddycreek.fvd;
+package org.portersville.muddycreek.vfd.servlet;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
@@ -9,8 +9,9 @@ import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.portersville.muddycreek.vfd.registration.Registration.Event;
+import org.portersville.muddycreek.vfd.entity.Event;
 
+import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -22,7 +23,10 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class EventProcessingTest {
@@ -49,12 +53,12 @@ public class EventProcessingTest {
     int count = 0;
     for (int i = 0; i < 4; i++) {
       events.add(Event.newBuilder()
-          .setName(NAME)
-          .setDescritpion(DESCRIPTION)
-          .setLocation(LOCATION)
-          .setStartDate(EventProcessing.ConvertDateToSecSinceEpoch(START_DATE_STRING))
-          .setEndDate(EventProcessing.ConvertDateToSecSinceEpoch(END_DATE_STRING))
-          .setTeamSize(TEAM_SIZE)
+          .name(NAME)
+          .description(DESCRIPTION)
+          .location(LOCATION)
+          .startDate(START_DATE_STRING)
+          .endDate(END_DATE_STRING)
+          .teamSize(TEAM_SIZE)
           .build());
     }
     helper.setUp();
@@ -78,10 +82,11 @@ public class EventProcessingTest {
     assertNotNull(processing);
     HttpServletRequest req = mock(HttpServletRequest.class);
     HttpServletResponse resp = mock(HttpServletResponse.class);
+    PersistenceManager pm = mock(PersistenceManager.class);
 
     Event source = events.get(0);
     given(req.getParameter("eventName")).willReturn(source.getName());
-    given(req.getParameter("eventDescription")).willReturn(source.getDescritpion());
+    given(req.getParameter("eventDescription")).willReturn(source.getDescription());
     given(req.getParameter("eventLocation")).willReturn(source.getLocation());
     given(req.getParameter("eventStartDate")).willReturn(START_DATE_STRING);
     given(req.getParameter("eventEndDate")).willReturn(END_DATE_STRING);
@@ -89,11 +94,12 @@ public class EventProcessingTest {
         willReturn(new Integer(source.getTeamSize()).toString());
     when(resp.getWriter())
         .thenReturn(new PrintWriter(new StringWriter()));
-    Event result = processing.AddEvent(req, user);
+    Event result = processing.addEvent(req, user, pm);
+    verify(pm, times(1)).makePersistent(any(Event.class));
     assertNotNull(result);
     assertEquals(source.getName(), result.getName());
     assertEquals(source.getLocation(), result.getLocation());
-    assertEquals(source.getDescritpion(), result.getDescritpion());
+    assertEquals(source.getDescription(), result.getDescription());
     assertEquals(source.getStartDate(), result.getStartDate());
     assertEquals(source.getEndDate(), result.getEndDate());
     assertEquals(source.getTeamSize(), result.getTeamSize());

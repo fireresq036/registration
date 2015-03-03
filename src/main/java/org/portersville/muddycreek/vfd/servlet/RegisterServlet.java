@@ -1,4 +1,4 @@
-package org.portersville.muddycreek.fvd;
+package org.portersville.muddycreek.vfd.servlet;
 
 import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.users.User;
@@ -22,6 +22,7 @@ import java.util.logging.Logger;
  * Created by mark on 2/15/15.
  */
 public class RegisterServlet extends HttpServlet {
+  private static final long serialVersionUID = 101L;
   private static final Logger log = Logger.getLogger(RegisterServlet.class.getName());
   private static final String CONFIRM_JSP = "/confirm.jsp";
 

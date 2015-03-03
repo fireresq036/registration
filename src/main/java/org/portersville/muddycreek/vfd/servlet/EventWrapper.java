@@ -1,4 +1,4 @@
-package org.portersville.muddycreek.fvd;
+package org.portersville.muddycreek.vfd.servlet;
 
 import org.portersville.muddycreek.vfd.registration.Registration.Event;
 

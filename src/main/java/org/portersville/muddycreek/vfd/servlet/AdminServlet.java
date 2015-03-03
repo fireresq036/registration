@@ -1,10 +1,12 @@
-package org.portersville.muddycreek.fvd;
+package org.portersville.muddycreek.vfd.servlet;
 
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import org.portersville.muddycreek.vfd.registration.Registration.Event;
+import org.portersville.muddycreek.vfd.entity.Event;
+import org.portersville.muddycreek.vfd.utility.PMF;
 
+import javax.jdo.PersistenceManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -23,6 +25,7 @@ import java.util.logging.Logger;
  * Created by mark on 2/16/15.
  */
 public class AdminServlet extends HttpServlet {
+  private static final long serialVersionUID = 101L;
   protected static final String DS_EVENT_ENTITY = "events";
   private static final Logger log = Logger.getLogger(AdminServlet.class.getName());
   private static final String ADMIN_EVENT_JSP = "/admin_event.jsp";
@@ -54,40 +57,46 @@ public class AdminServlet extends HttpServlet {
     User user = userService.getCurrentUser();
     String command = req.getParameter("command");
     log.info("processing: " + command);
-    if (command == null || command.equalsIgnoreCase(GET_EVENTS)) {
-      req.setAttribute("known_events", eventProcessor.LoadEvents());
-      forwardTo = ADMIN_EVENT_JSP;
-    } else if (command.equalsIgnoreCase(GET_USERS)) {
-      forwardTo = ADMIN_USER;
-    } else if (command.equalsIgnoreCase(ADD_EVENT)) {
-      List<Event> events =
-          (List<Event>) req.getAttribute("known_events");
-      if (events == null) {
-        events = new ArrayList<>();
-      }
-
-      try {
-        log.log(Level.INFO, "events size: {0}", new Integer[]{events.size()});
-        events.add(eventProcessor.AddEvent(req, user));
-        log.log(Level.INFO, "2events size: {0}", new Integer[]{events.size()});
-        req.setAttribute("known_events", events);
-      } catch (ParseException e) {
-        resp.sendRedirect(
-            String.format("%s?errorString=%s", ADMIN_EVENT_JSP,
-                "Could not parse one of the dates."));
-      }
-      forwardTo = ADMIN_EVENT_JSP;
-    } else {
-      StringBuilder builder = new StringBuilder();
+    StringBuilder builder = new StringBuilder();
+    PersistenceManager pm = PMF.get().getPersistenceManager();
+    try {
       if (command == null) {
         builder.append("command not found on URL");
       } else {
-        builder.append("command ")
-            .append(command)
-            .append(" is not known");
+        if (command.equalsIgnoreCase(GET_EVENTS)) {
+          req.setAttribute("known_events", eventProcessor.loadEvents(pm));
+          forwardTo = ADMIN_EVENT_JSP;
+        } else if (command.equalsIgnoreCase(GET_USERS)) {
+          forwardTo = ADMIN_USER;
+        } else if (command.equalsIgnoreCase(ADD_EVENT)) {
+          List<Event> events =
+              (List<Event>) req.getAttribute("known_events");
+          if (events == null) {
+            events = new ArrayList<Event>();
+          }
+          try {
+            log.log(Level.INFO, "events size: {0}", new Integer[]{events.size()});
+            events.add(eventProcessor.addEvent(req, user, pm));
+            log.log(Level.INFO, "2events size: {0}", new Integer[]{events.size()});
+            req.setAttribute("known_events", events);
+          } catch (ParseException e) {
+            resp.sendRedirect(
+                String.format("%s?errorString=%s", ADMIN_EVENT_JSP,
+                    "Could not parse one of the dates."));
+          }
+          forwardTo = ADMIN_EVENT_JSP;
+        } else {
+          builder.append("command ")
+              .append(command)
+              .append(" is not known");
+        }
+        if (builder.length() > 0) {
+          resp.sendRedirect(
+              String.format("%s?errorString=%s", ADMIN_JSP, builder.toString()));
+        }
       }
-      resp.sendRedirect(
-          String.format("%s?errorString=%s", ADMIN_JSP, builder.toString()));
+    } finally {
+      pm.close();
     }
     ServletConfig config = getServletConfig();
     ServletContext context = config.getServletContext();
