@@ -4,9 +4,9 @@ import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
-import org.portersville.muddycreek.vfd.registration.Registration.Address;
-import org.portersville.muddycreek.vfd.registration.Registration.Person;
-import org.portersville.muddycreek.vfd.registration.Registration.Team;
+import org.portersville.muddycreek.vfd.entity.Address;
+import org.portersville.muddycreek.vfd.entity.Person;
+import org.portersville.muddycreek.vfd.entity.Team;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

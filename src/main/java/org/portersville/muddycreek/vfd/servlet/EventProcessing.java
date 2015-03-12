@@ -1,18 +1,19 @@
 package org.portersville.muddycreek.vfd.servlet;
 
-import com.google.appengine.api.users.User;
-import org.portersville.muddycreek.vfd.entity.Event;
-import org.portersville.muddycreek.vfd.utility.PMF;
+import static com.googlecode.objectify.ObjectifyService.ofy;
 
-import javax.jdo.PersistenceManager;
-import javax.jdo.Query;
+import com.google.appengine.api.users.User;
+import com.googlecode.objectify.cmd.Query;
+import org.portersville.muddycreek.vfd.entity.Event;
+import org.portersville.muddycreek.vfd.entity.Log;
+import org.portersville.muddycreek.vfd.util.EntityCache;
+
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -21,71 +22,82 @@ import java.util.logging.Logger;
 public class EventProcessing implements Serializable {
   private static final long serialVersionUID = 101L;
   private static final Logger log = Logger.getLogger(EventProcessing.class.getName());
-//  private static final String DS_ID = "id";
-//  private static final String DS_NAME = "name";
-//  private static final String DS_DESCRIPTION = "description";
-//  private static final String DS_LOCATION = "location";
-//  private static final String DS_START_DATE = "start_date";
-//  private static final String DS_END_DATE = "end_date";
-//  private static final String DS_TEAM_SIZE = "team_size";
-//  private static final String DS_DATE = "date";
-//  private static final String DS_AUTHOR_ID = "author_id";
-//  private static final String DS_AUTHOR_EMAIL = "author_email";
-//  private static final DateFormat DF = new SimpleDateFormat("MM/dd/yyyy");
-
-  protected Event addEvent(HttpServletRequest req, User user, PersistenceManager pm)
+  private static final String COUNT_KEY = "Event-count";
+  private static final String EVENT_KEY = "Event-";
+  protected Event addEvent(HttpServletRequest req, User user)
       throws ParseException {
-    Event.Builder builder = Event.newBuilder()
-        .name(req.getParameter("eventName"))
-        .description(req.getParameter("eventDescription"))
-        .location(req.getParameter("eventLocation"))
-        .startDate(req.getParameter("eventStartDate"))
-        .endDate(req.getParameter("eventEndDate"))
-        .teamSize(req.getParameter("eventTeamSize"));
-    if (user != null) {
-      builder.userId(user.getUserId())
-          .userEmail(user.getEmail());
-    }
-    Event event = builder.build();
-    try {
-      pm.makePersistent(event);
-    } finally {
-      pm.close();
-    }
-
-
-//    eventData.setProperty(DS_DATE, new Date());
-//    eventData.setProperty(DS_ID, event.getId());
-//    eventData.setProperty(DS_NAME, event.getName());
-//    eventData.setProperty(DS_LOCATION, event.getLocation());
-//    eventData.setProperty(DS_START_DATE, event.getStartDate());
-//    eventData.setProperty(DS_END_DATE, event.getEndDate());
-//    eventData.setProperty(DS_TEAM_SIZE, event.getTeamSize());
-
-//    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-//    datastore.put(eventData);
+    Log.Builder log_builder = null;
+    Event event = Event.newBuilder()
+        .setName(req.getParameter("eventName"))
+        .setDescription(req.getParameter("eventDescription"))
+        .setLocation(req.getParameter("eventLocation"))
+        .setStartDate(req.getParameter("eventStartDate"))
+        .setEndDate(req.getParameter("eventEndDate"))
+        .setTeamSize(req.getParameter("eventTeamSize"))
+        .build();
+    saveEvent(event, user);
     return event;
   }
 
-  protected List<Event> loadEvents(PersistenceManager pm) {
-    Query q = pm.newQuery(Event.class);
-    List<Event> events = new ArrayList<Event>();
-    try {
-      events = (List<Event>) q.execute();
-//      for (Event result : events) {
-//        Event event = Event.newBuilder()
-//            .id((Integer) result.getProperty(DS_ID))
-//            .name((String) result.getProperty(DS_NAME))
-//            .description((String) result.getProperty(DS_DESCRIPTION))
-//            .location((String) result.getProperty(DS_LOCATION))
-//            .startDate((Date) result.getProperty(DS_START_DATE))
-//            .endDate((Date) result.getProperty(DS_END_DATE))
-//            .teamSize((Integer) result.getProperty(DS_TEAM_SIZE))
-//            .build();
-//        events.add(event);    }
-    } finally {
-      q.closeAll();
+  protected void saveEvent(Event event, User user) {
+    EntityCache cache = EntityCache.CacheInstance();
+    ofy().save().entity(event).now();
+    if (user != null) {
+      Log log = Log.newBuilder()
+          .setUserId(user.getUserId())
+          .setUserEmail(user.getEmail())
+          .setEntityKey(event.getId())
+          .setEntityType(Log.EntityType.EVENT)
+          .build();
+      ofy().save().entity(log).now();
     }
+    log.log(Level.INFO, "saved event {}", event.getName());
+    if (cache.find(COUNT_KEY) == null) {
+      List<Event> events = new ArrayList<Event>();
+      ReloadCache(new ArrayList<Event>(), cache);
+      log.log(Level.INFO, "Reloaded cache");
+    } else {
+      Integer count = cache.find(COUNT_KEY);
+      cache.put(EVENT_KEY + count, event);
+      log.log(Level.INFO, "added event {} to cache", event.getName());
+      count++;
+      cache.put(COUNT_KEY, count);
+      log.log(Level.INFO, "set event cachc count to {}", count);
+    }
+  }
+
+  protected List<Event> loadEvents() {
+    boolean reload_cache = false;
+    List<Event> events = new ArrayList<Event>();
+    EntityCache cache = EntityCache.CacheInstance();
+    if (cache.isInCache(COUNT_KEY)) {
+      int event_count = cache.find(COUNT_KEY);
+      for (int i=0; i < event_count; i++) {
+        Event event = cache.find(EVENT_KEY + i);
+        if (event == null) {
+          reload_cache = true;
+          break;
+        }
+      }
+    }
+    if (reload_cache) {
+      ReloadCache(events, cache);
+    }
+
+    log.log(Level.INFO,"retrieved {0} events from datastore", events.size());
     return events;
+  }
+
+  private void ReloadCache(List<Event> events, EntityCache cache) {
+    Query<Event> q = ofy().load().type(Event.class);
+    int count = 0;
+    for (Event result : q) {
+      events.add(result);
+      log.log(Level.INFO, "inserting event names {0} into cache",
+          result.getName());
+      cache.put(EVENT_KEY + count, result);
+      count++;
+    }
+    cache.put(COUNT_KEY, count);
   }
 }
