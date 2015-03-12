@@ -4,9 +4,7 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import org.portersville.muddycreek.vfd.entity.Event;
-import org.portersville.muddycreek.vfd.utility.PMF;
 
-import javax.jdo.PersistenceManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -58,45 +56,40 @@ public class AdminServlet extends HttpServlet {
     String command = req.getParameter("command");
     log.info("processing: " + command);
     StringBuilder builder = new StringBuilder();
-    PersistenceManager pm = PMF.get().getPersistenceManager();
-    try {
-      if (command == null) {
-        builder.append("command not found on URL");
-      } else {
-        if (command.equalsIgnoreCase(GET_EVENTS)) {
-          req.setAttribute("known_events", eventProcessor.loadEvents(pm));
-          forwardTo = ADMIN_EVENT_JSP;
-        } else if (command.equalsIgnoreCase(GET_USERS)) {
-          forwardTo = ADMIN_USER;
-        } else if (command.equalsIgnoreCase(ADD_EVENT)) {
-          List<Event> events =
-              (List<Event>) req.getAttribute("known_events");
-          if (events == null) {
-            events = new ArrayList<Event>();
-          }
-          try {
-            log.log(Level.INFO, "events size: {0}", new Integer[]{events.size()});
-            events.add(eventProcessor.addEvent(req, user, pm));
-            log.log(Level.INFO, "2events size: {0}", new Integer[]{events.size()});
-            req.setAttribute("known_events", events);
-          } catch (ParseException e) {
-            resp.sendRedirect(
-                String.format("%s?errorString=%s", ADMIN_EVENT_JSP,
-                    "Could not parse one of the dates."));
-          }
-          forwardTo = ADMIN_EVENT_JSP;
-        } else {
-          builder.append("command ")
-              .append(command)
-              .append(" is not known");
+    if (command == null) {
+      builder.append("command not found on URL");
+    } else {
+      if (command.equalsIgnoreCase(GET_EVENTS)) {
+          req.setAttribute("known_events", eventProcessor.loadEvents());
+        forwardTo = ADMIN_EVENT_JSP;
+      } else if (command.equalsIgnoreCase(GET_USERS)) {
+        forwardTo = ADMIN_USER;
+      } else if (command.equalsIgnoreCase(ADD_EVENT)) {
+        List<Event> events =
+            (List<Event>) req.getAttribute("known_events");
+        if (events == null) {
+          events = new ArrayList<Event>();
         }
-        if (builder.length() > 0) {
+        try {
+          log.log(Level.INFO, "events size: {0}", new Integer[]{events.size()});
+          events.add(eventProcessor.addEvent(req, user));
+          log.log(Level.INFO, "After events size: {0}", new Integer[]{events.size()});
+          req.setAttribute("known_events", events);
+        } catch (ParseException e) {
           resp.sendRedirect(
-              String.format("%s?errorString=%s", ADMIN_JSP, builder.toString()));
+              String.format("%s?errorString=%s", ADMIN_EVENT_JSP,
+                  "Could not parse one of the dates."));
         }
+        forwardTo = ADMIN_EVENT_JSP;
+      } else {
+        builder.append("command ")
+            .append(command)
+            .append(" is not known");
       }
-    } finally {
-      pm.close();
+      if (builder.length() > 0) {
+        resp.sendRedirect(
+            String.format("%s?errorString=%s", ADMIN_JSP, builder.toString()));
+      }
     }
     ServletConfig config = getServletConfig();
     ServletContext context = config.getServletContext();
