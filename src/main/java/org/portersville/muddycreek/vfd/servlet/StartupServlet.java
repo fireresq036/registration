@@ -1,8 +1,11 @@
 package org.portersville.muddycreek.vfd.servlet;
 
 import com.googlecode.objectify.ObjectifyService;
+import org.portersville.muddycreek.vfd.entity.Address;
 import org.portersville.muddycreek.vfd.entity.Event;
 import org.portersville.muddycreek.vfd.entity.Log;
+import org.portersville.muddycreek.vfd.entity.Person;
+import org.portersville.muddycreek.vfd.entity.Team;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +20,11 @@ import java.util.logging.Logger;
  */
 public class StartupServlet  extends HttpServlet {
   static {
+    ObjectifyService.register(Address.class);
     ObjectifyService.register(Event.class);
     ObjectifyService.register(Log.class);
+    ObjectifyService.register(Person.class);
+    ObjectifyService.register(Team.class);
   }
 
   private static final Logger log = Logger.getLogger(StartupServlet.class.getName());

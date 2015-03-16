@@ -20,3 +20,15 @@ h1 {
 .error {
     background-color: rosybrown;
  }
+ .error_text {
+    color: orange;
+    font-weight: bold;
+}
+
+ .test {
+    background-color: red;
+ }
+
+ .hidden {
+    display:none;
+ }

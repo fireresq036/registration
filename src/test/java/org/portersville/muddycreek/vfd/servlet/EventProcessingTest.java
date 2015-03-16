@@ -1,5 +1,7 @@
 package org.portersville.muddycreek.vfd.servlet;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -8,12 +10,17 @@ import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.VoidWork;
+import com.googlecode.objectify.cmd.Query;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.portersville.muddycreek.vfd.entity.Address;
 import org.portersville.muddycreek.vfd.entity.Event;
 import org.portersville.muddycreek.vfd.entity.Log;
+import org.portersville.muddycreek.vfd.entity.Person;
+import org.portersville.muddycreek.vfd.entity.Team;
+import org.portersville.muddycreek.vfd.util.Entities;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,11 +31,15 @@ import java.io.StringWriter;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static com.googlecode.objectify.ObjectifyService.ofy;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
@@ -58,15 +69,16 @@ public class EventProcessingTest {
 
   @BeforeClass
   public static void initializeObjectify() {
-    ObjectifyService.register(Log.class);
     ObjectifyService.register(Event.class);
+    ObjectifyService.register(Log.class);
   }
+
   @Before
   public void setUp() throws Exception {
     int count = 0;
     for (int i = 0; i < 4; i++) {
       events.add(Event.newBuilder()
-          .setName(NAME)
+          .setName(NAME + i)
           .setDescription(DESCRIPTION)
           .setLocation(LOCATION)
           .setStartDate(START_DATE_STRING)
@@ -77,6 +89,7 @@ public class EventProcessingTest {
     helper.setUp();
     UserService userService = UserServiceFactory.getUserService();
     user = userService.getCurrentUser();
+
     processing = new EventProcessing();
     assertNotNull(processing);
   }
@@ -115,7 +128,6 @@ public class EventProcessingTest {
           result = processing.addEvent(req, user);
           assertNotNull(result);
           assertNotNull(result.getId());
-          log.log(Level.INFO, "id = {0}", result.getId());
           assertEquals(source.getName(), result.getName());
           assertEquals(source.getLocation(), result.getLocation());
           assertEquals(source.getDescription(), result.getDescription());
@@ -129,7 +141,7 @@ public class EventProcessingTest {
     });
   }
   @Test
-  public void testGet() throws IOException, ParseException {
+  public void testLoadEvents() throws IOException, ParseException {
     ObjectifyService.run(new VoidWork() {
       public void vrun() {
         Event result = null;
@@ -144,6 +156,29 @@ public class EventProcessingTest {
           assertEquals(source.getTeamSize(), target.getTeamSize());
           assertEquals(source.getLocation(), target.getLocation());
           assertEquals(source.getEndDate(), target.getEndDate());
+        }
+      }
+    });
+  }
+
+  @Test
+  public void testLogMessages() throws IOException, ParseException {
+    ObjectifyService.run(new VoidWork() {
+      public void vrun() {
+        Event result = null;
+        for (Event event : events) {
+          processing.saveEvent(event, user);
+        }
+        List<Event> foundEvents = processing.loadEvents();
+        Map<Long, Event> mappedEvents = new TreeMap<Long, Event>();
+        for (Event event : foundEvents) {
+          mappedEvents.put(event.getId(), event);
+        }
+        List<Log> logs = ofy().load()
+            .type(Log.class).filter("entityType ==", Entities.EVENT).list();
+        assertEquals(logs.size(), foundEvents.size());
+        for (Log log : logs) {
+          assertTrue(mappedEvents.containsKey(log.getEntityKey()));
         }
       }
     });

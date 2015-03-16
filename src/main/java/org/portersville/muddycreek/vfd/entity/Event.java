@@ -1,9 +1,9 @@
 package org.portersville.muddycreek.vfd.entity;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.PersistenceCapable;
-import javax.jdo.annotations.Persistent;
-import javax.jdo.annotations.PrimaryKey;
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,42 +12,32 @@ import java.util.Date;
  * Created by mark on 3/1/15.
  * Entity class for events at Portersville Muddycreek VFD
  */
-
-@PersistenceCapable
-public class Event {
-  @PrimaryKey
-  @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-  private long id;
-
-  @Persistent
+@Entity
+public class Event implements Serializable {
+  @Id
+  private Long id;
   private String name;
-
-  @Persistent
   private String description;
-
-  @Persistent
   private String location;
+  private Date startDate;
+  private Date endDate;
+  private int teamSize;
 
-  @Persistent
-  private Date start_date;
+  public static Builder newBuilder() {
+    return new Builder();
+  }
 
-  @Persistent
-  private Date end_date;
+  public static Builder newBuilder(Event event) {
+    return new Builder(event);
+  }
 
-  @Persistent
-  private int team_size;
+  private Event() {}
 
-  @Persistent
-  private String user_id;
-
-  @Persistent
-  private String user_email;
-
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(long id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
@@ -76,49 +66,27 @@ public class Event {
   }
 
   public Date getStartDate() {
-    return start_date;
+    return startDate;
   }
 
   public void setStartDate(Date start_date) {
-    this.start_date = start_date;
+    this.startDate = start_date;
   }
 
   public Date getEndDate() {
-    return end_date;
+    return endDate;
   }
 
   public void setEndDate(Date end_date) {
-    this.end_date = end_date;
+    this.endDate = end_date;
   }
 
   public int getTeamSize() {
-    return team_size;
+    return teamSize;
   }
 
   public void setTeamSize(int team_size) {
-    this.team_size = team_size;
-  }
-
-  public String getUserId() {
-    return user_id;
-  }
-
-  public void setUserId(String user_id) { this.user_id = user_id; }
-
-  public String getUserEmail() {
-    return user_email;
-  }
-
-  public void setUserEmail(String user_email) {
-    this.user_email = user_email;
-  }
-
-  public static Builder newBuilder() {
-    return new Builder();
-  }
-
-  public static Builder newBuilder(Event event) {
-    return new Builder(event);
+    this.teamSize = team_size;
   }
 
   public static class Builder {
@@ -134,63 +102,48 @@ public class Event {
       this.event = event;
     }
 
-    public Builder id(long id) {
-      event.setId(id);
-      return this;
-    }
-
-    public Builder name(String name) {
+    public Builder setName(String name) {
       event.setName(name);
       return this;
     }
 
-    public Builder description(String description) {
+    public Builder setDescription(String description) {
       event.setDescription(description);
       return this;
     }
 
-    public Builder location(String location) {
+    public Builder setLocation(String location) {
       event.setLocation(location);
       return this;
     }
 
-    public Builder teamSize(int team_size) {
+    public Builder setTeamSize(int team_size) {
       event.setTeamSize(team_size);
       return this;
     }
 
-    public Builder teamSize(String team_size) {
+    public Builder setTeamSize(String team_size) {
       event.setTeamSize(new Integer(team_size).intValue());
       return this;
     }
 
-    public Builder startDate(String start_date) throws ParseException {
+    public Builder setStartDate(String start_date) throws ParseException {
       event.setStartDate(createDate(start_date));
       return this;
     }
 
-    public Builder endDate(String end_date) throws ParseException {
+    public Builder setEndDate(String end_date) throws ParseException {
       event.setEndDate(createDate(end_date));
       return this;
     }
 
-    public Builder startDate(Date start_date) {
+    public Builder setStartDate(Date start_date) {
       event.setStartDate(start_date);
       return this;
     }
 
-    public Builder endDate(Date end_date) {
+    public Builder setEndDate(Date end_date) {
       event.setEndDate(end_date);
-      return this;
-    }
-
-    public Builder userId(String userId) {
-      event.setUserId(userId);
-      return this;
-    }
-
-    public Builder userEmail(String email) {
-      event.setUserEmail(email);
       return this;
     }
 
