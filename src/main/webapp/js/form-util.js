@@ -67,3 +67,7 @@ function validateNumber(elem, buttonId) {
     }
     showSubmitButton(buttonId);
 };
+
+function log(message) {
+    console.log(5 + 6);
+}

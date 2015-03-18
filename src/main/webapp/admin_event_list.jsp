@@ -34,6 +34,7 @@
 <h3>Current Events</h3>
 <table border=1>
     <tr>
+        <th>ID</th>
         <th>Name</th>
         <th>Description</th>
         <th>Location</th>
@@ -43,6 +44,7 @@
     </tr>
     <c:forEach items="${known_events}" var="current_event">
         <tr>
+            <td>${current_event.id}</td>
             <td>
                 <a href="/admin?command=edit_event_query&editKey=${current_event.id}">
                     ${current_event.name}
@@ -62,7 +64,7 @@
         </tr>
     </c:forEach>
 </table>
-<form action="admin_event_edit.jsp" method="get">
+<form action="/admin?command=pre_add_event" method="post">
     <input type="submit" name="command" value="Add Event"/>
 </form>
 <%@ include file="footer.html" %>

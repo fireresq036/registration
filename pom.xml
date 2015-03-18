@@ -45,7 +45,7 @@
   </scm>
 
   <properties>
-    <appengine.app.version>4-alpha</appengine.app.version>
+    <appengine.app.version>5-alpha</appengine.app.version>
     <appengine.app.project>vocal-eon-639</appengine.app.project>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <app.appengine.plugin.version>1.9.18</app.appengine.plugin.version>

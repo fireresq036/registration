@@ -34,6 +34,9 @@
     }
 %>
 <%--  onsubmit="return validate_form();" --%>
+<script>
+console.log("event id: ${edit_event.id}");
+</script>
 <fmt:formatDate type="date" value="${now}" />
 <form method="post" id="event_form"
   <c:if test="${add_event}">
