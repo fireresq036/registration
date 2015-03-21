@@ -39,23 +39,25 @@ public class AdminServlet extends HttpServlet {
 
   public AdminServlet() {
     super();
-
   }
 
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws IOException, ServletException {
-    log.log(Level.INFO, "doGet");
     doPost(req, resp);
   }
 
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws IOException, ServletException {
-    log.log(Level.INFO, "doPost");
     String forwardTo = ADMIN_JSP;
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
+    if (user == null) {
+      log.log(Level.WARNING, "No user defined for application");
+    } else {
+      log.log(Level.INFO, "user = ", user.getUserId());
+    }
     String command = req.getParameter("command");
     log.info("processing: " + command);
     StringBuilder builder = new StringBuilder();
@@ -81,7 +83,7 @@ public class AdminServlet extends HttpServlet {
       } else if (command.equalsIgnoreCase(ADD_EVENT)) {
         log.log(Level.INFO, ADD_EVENT);
         try {
-          eventProcessor.addEvent(req, user);
+          eventProcessor.saveEvent(eventFromRequest(req), user);
         } catch (ParseException e) {
           req.setAttribute("error_string", builder.toString());
         }
@@ -100,13 +102,7 @@ public class AdminServlet extends HttpServlet {
       } else if (command.equalsIgnoreCase(EDIT_EVENT)){
         log.log(Level.INFO, EDIT_EVENT);
         try {
-          if (req.getParameter("editKey") == null) {
-            log.log(Level.SEVERE, "Edit Requested but no key supplies");
-            req.setAttribute("error_string", "No Key specified on edit");
-          } else {
-            eventProcessor.UpdateEvent(new Long(req.getParameter("editKey")),
-                req, user);
-          }
+          eventProcessor.updateEvent(eventFromRequest(req), user);
         } catch (ParseException e) {
           e.printStackTrace();
         }
@@ -129,4 +125,24 @@ public class AdminServlet extends HttpServlet {
         context.getRequestDispatcher(forwardTo);
     reqDispatcher.forward(req, resp);
   }
+
+  protected Event eventFromRequest(HttpServletRequest req) throws ParseException {
+    Long id = null;
+    String id_s = req.getParameter("eventId");
+    if (id_s != null && id_s.length() > 0) {
+      id = new Long(id_s);
+    }
+    log.log(Level.INFO, "event From request id = {0}", id);
+    log.log(Level.INFO, "event From request id_s = {0}", id_s);
+    return Event.newBuilder()
+        .setId(id)
+        .setName(req.getParameter("eventName"))
+        .setDescription(req.getParameter("eventDescription"))
+        .setLocation(req.getParameter("eventLocation"))
+        .setStartDate(req.getParameter("eventStartDate"))
+        .setEndDate(req.getParameter("eventEndDate"))
+        .setTeamSize(req.getParameter("eventTeamSize"))
+        .build();
+  }
+
 }

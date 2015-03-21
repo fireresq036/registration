@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Created by mark on 3/12/15.
@@ -69,10 +70,12 @@ public class EventTest {
     Event event2 = Event.newBuilder()
         .setDescription(new_description)
         .build();
-    assertEquals(NAME, event.getName());
-    assertEquals(new_description, event.getDescription());
-    assertEquals(LOCATION, event.getLocation());
-    assertEquals(START_DATE_STRING, SDF.format(event.getStartDate()));
-    assertEquals(END_DATE_STRING, SDF.format(event.getEndDate()));
-    assertEquals(TEAM_SIZE, event.getTeamSize());
-  }}
+    assertEquals(event.getName(), event2.getName());
+    assertNotEquals(event.getDescription(), event2.getDescription());
+    assertEquals(event.getLocation(), event2.getLocation());
+    assertEquals(event.getStartDate(), event2.getStartDate());
+    assertEquals(event.getEndDate(), event2.getEndDate());
+    assertEquals(event.getTeamSize(), event2.getTeamSize());
+    assertEquals(event.getId(), event2.getId());
+  }
+}

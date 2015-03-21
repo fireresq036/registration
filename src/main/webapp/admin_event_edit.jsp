@@ -43,9 +43,10 @@ console.log("event id: ${edit_event.id}");
       action="/admin?command=add_event"
   </c:if>
   <c:if test="${!add_event}">
-      action="/admin?command=edit_event&editKey=${edit_event.id}"
+      action="/admin?command=edit_event"
   </c:if>
 >
+    <input id="id" type="hidden" name="eventId" value="${edit_event.id}"
     <div>
         <p>Event Name:
         <div id="name_error" class="hidden"></div>
@@ -67,7 +68,7 @@ console.log("event id: ${edit_event.id}");
     <div>
         <p>Event Start Date (mm/dd/yyy):
         <div id="startDate_error" class="hidden"></div>
-        <input id="startDate" type="text" name="eventStartDate" value="${page.startDate}"
+        <input id="startDate" type="text" name="eventStartDate" value="${edit_event.startDate}"
                onBlur="validateDate(this, 'submit_button')"/>
     </div>
     <div>

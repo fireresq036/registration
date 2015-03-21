@@ -38,6 +38,7 @@ import java.util.logging.Logger;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -104,44 +105,67 @@ public class EventProcessingTest {
     EventProcessing processing = new EventProcessing();
     assertNotNull(processing);
   }
-  @Test
-  public void testAdd() throws IOException, ParseException {
-//    final EventProcessing processing = new EventProcessing();
-//    assertNotNull(processing);
-    final HttpServletRequest req = mock(HttpServletRequest.class);
-    HttpServletResponse resp = mock(HttpServletResponse.class);
 
+  @Test
+  public void testSave_CreateId() throws IOException, ParseException {
     final Event source = events.get(0);
-    given(req.getParameter("eventName")).willReturn(source.getName());
-    given(req.getParameter("eventDescription")).willReturn(source.getDescription());
-    given(req.getParameter("eventLocation")).willReturn(source.getLocation());
-    given(req.getParameter("eventStartDate")).willReturn(START_DATE_STRING);
-    given(req.getParameter("eventEndDate")).willReturn(END_DATE_STRING);
-    given(req.getParameter("eventTeamSize")).
-        willReturn(new Integer(source.getTeamSize()).toString());
-    when(resp.getWriter())
-        .thenReturn(new PrintWriter(new StringWriter()));
     ObjectifyService.run(new VoidWork() {
       public void vrun() {
-        try {
-          Event result = null;
-          result = processing.addEvent(req, user);
-          assertNotNull(result);
-          assertNotNull(result.getId());
-          assertEquals(source.getName(), result.getName());
-          assertEquals(source.getLocation(), result.getLocation());
-          assertEquals(source.getDescription(), result.getDescription());
-          assertEquals(source.getStartDate(), result.getStartDate());
-          assertEquals(source.getEndDate(), result.getEndDate());
-          assertEquals(source.getTeamSize(), result.getTeamSize());
-        } catch (ParseException e) {
-          fail("could not parse the date: " + e);
-        }
+        processing.saveEvent(source, user);
+        Event result = processing.eventFromId(source.getId());
+        assertNotNull(result);
+        assertNotNull(result.getId());
+        assertEquals(source.getName(), result.getName());
+        assertEquals(source.getLocation(), result.getLocation());
+        assertEquals(source.getDescription(), result.getDescription());
+        assertEquals(source.getStartDate(), result.getStartDate());
+        assertEquals(source.getEndDate(), result.getEndDate());
+        assertEquals(source.getTeamSize(), result.getTeamSize());
+        List<Event> foundEvents = processing.loadEvents();
+        assertEquals(1, foundEvents.size());
       }
     });
   }
+
+  @Test
+  public void testUpdate() throws IOException, ParseException {
+    ObjectifyService.run(new VoidWork() {
+      public void vrun() {
+        Event source = events.get(0);
+        log.log(Level.INFO, "******************");
+        log.log(Level.INFO, "source {0}", source);
+        processing.saveEvent(source, user);
+        Event result = processing.eventFromId(source.getId());
+        log.log(Level.INFO, "result {0}", result);
+        assertEquals(source.getId(), result.getId());
+        String new_descritpion = DESCRIPTION + "-1";
+        Event result2 = Event.newBuilder(result)
+            .setDescription(new_descritpion)
+            .build();
+        assertNotNull(result2);
+        assertNotNull(result2.getId());
+        assertEquals(source.getId(), result.getId());
+        assertNotEquals(source.getDescription(), result2.getDescription());
+        log.log(Level.INFO, "result2 {0}", result2);
+        processing.updateEvent(result2, user);
+        Event result3 = processing.eventFromId(source.getId());
+        log.log(Level.INFO, "result3 {0}", result3);
+        assertEquals(source.getId(), result.getId());
+        assertEquals(source.getName(), result3.getName());
+        assertEquals(source.getLocation(), result3.getLocation());
+        assertEquals(new_descritpion, result3.getDescription());
+        assertEquals(source.getStartDate(), result3.getStartDate());
+        assertEquals(source.getEndDate(), result3.getEndDate());
+        assertEquals(source.getTeamSize(), result3.getTeamSize());
+        assertEquals(1, processing.loadEvents().size());
+        log.log(Level.INFO, "******************");
+      }
+    });
+  }
+
   @Test
   public void testLoadEvents() throws IOException, ParseException {
+    log.log(Level.INFO, "++++++++++++++++");
     ObjectifyService.run(new VoidWork() {
       public void vrun() {
         Event result = null;
@@ -150,7 +174,7 @@ public class EventProcessingTest {
         }
         List<Event> foundEvents = processing.loadEvents();
         assertEquals(events.size(), foundEvents.size());
-        for (int i=0; i < events.size(); i++) {
+        for (int i = 0; i < events.size(); i++) {
           Event source = events.get(i);
           Event target = foundEvents.get(i);
           assertEquals(source.getTeamSize(), target.getTeamSize());
@@ -159,6 +183,7 @@ public class EventProcessingTest {
         }
       }
     });
+    log.log(Level.INFO, "++++++++++++++++");
   }
 
   @Test

@@ -23,40 +23,21 @@ public class EventProcessing implements Serializable {
   private static final Logger log = Logger.getLogger(EventProcessing.class.getName());
 //  private static final String COUNT_KEY = "Event-count";
 //  private static final String EVENT_KEY = "Event-";
-  protected Event addEvent(HttpServletRequest req, User user)
-      throws ParseException {
-    Log.Builder log_builder = null;
-    Event event = eventFromRequest(req);
-    saveEvent(event, user);
-    return event;
-  }
-
-  private Event eventFromRequest(HttpServletRequest req) throws ParseException {
-    return Event.newBuilder()
-          .setName(req.getParameter("eventName"))
-          .setDescription(req.getParameter("eventDescription"))
-          .setLocation(req.getParameter("eventLocation"))
-          .setStartDate(req.getParameter("eventStartDate"))
-          .setEndDate(req.getParameter("eventEndDate"))
-          .setTeamSize(req.getParameter("eventTeamSize"))
-          .build();
-  }
 
   protected void saveEvent(Event event, User user) {
 //    EntityCache cache = EntityCache.CacheInstance();
 //    Long saved_id = event.getId();
-    ofy().save().entity(event).now();
-    if (user != null) {
-      Log log_record = Log.newBuilder()
-          .setUserId(user.getUserId())
-          .setUserEmail(user.getEmail())
-          .setEntityKey(event.getId())
-          .setEntityType(Log.EntityType.EVENT)
-          .build();
-      ofy().save().entity(log_record).now();
-      log.log(Level.INFO, "writing log");
-    }
-    log.log(Level.INFO, "saved event {0}", event.getName());
+    if (event.getId() != null) {
+      log.log(Level.WARNING,
+          "Trying to Save Event named {0} but an ID already exists",
+          event.getName());
+    } else {
+      ofy().save().entity(event).now();
+      if (user != null) {
+        createLogEntry(event, user);
+      }
+      log.log(Level.INFO, "saved event {0}({1})",
+          new Object[]{event.getName(), event.getId()});
 //    if (cache.find(COUNT_KEY) == null) {
 //      List<Event> events = new ArrayList<Event>();
 //      ReloadCache(new ArrayList<Event>(), cache);
@@ -71,17 +52,43 @@ public class EventProcessing implements Serializable {
 //    } else {
 //      ReloadCache(new ArrayList<Event>(), cache);
 //    }
+    }
+  }
+
+  private void createLogEntry(Event event, User user) {
+    log.log(Level.INFO, "adding log record");
+    Log log_record = Log.newBuilder()
+        .setUserId(user.getUserId())
+        .setUserEmail(user.getEmail())
+        .setEntityKey(event.getId())
+        .setEntityType(Log.EntityType.EVENT)
+        .build();
+    ofy().save().entity(log_record).now();
+  }
+
+  protected void updateEvent(Event event, User user) {
+    if (event.getId() == null) {
+      log.log(Level.WARNING,
+          "Trying to update Event named {0} but there is no ID",
+          event.getName());
+    } else {
+      Event found = eventFromId(event.getId());
+      found.update(event);
+      ofy().save().entity(found).now();
+      if (user != null) {
+        createLogEntry(found, user);
+      }
+      log.log(Level.INFO, "updated event {0}({1})",
+          new Object[]{ found.getName(), found.getId() });
+    }
   }
 
   protected List<Event> loadEvents() {
-    log.log(Level.INFO, "loadEvents()");
 //    boolean reload_cache = false;
     List<Event> events = new ArrayList<Event>();
     Query<Event> q = ofy().load().type(Event.class);
-    int count = 0;
     for (Event result : q) {
       events.add(result);
-      count++;
     }
 
 //    for (int i=0; i < event_count; i++) {
@@ -104,8 +111,6 @@ public class EventProcessing implements Serializable {
 //    if (reload_cache) {
 //      ReloadCache(events, cache);
 //    }
-
-    log.log(Level.INFO,"retrieved {0} events from datastore", events.size());
     return events;
   }
 
@@ -123,13 +128,7 @@ public class EventProcessing implements Serializable {
 //    cache.put(COUNT_KEY, count);
 //  }
 
-  public void UpdateEvent(Long editKey, HttpServletRequest req, User user)
-      throws ParseException {
-    Event event = Event.newBuilder(eventFromRequest(req)).build();
-    saveEvent(event, user);
-  }
-
-  public Event eventFromId(Long event_id) {
+  public Event eventFromId(Long event_id)  {
     return ofy().load().type(Event.class).id(event_id).now();
   }
 

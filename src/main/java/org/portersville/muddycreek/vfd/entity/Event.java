@@ -33,11 +33,26 @@ public class Event implements Serializable {
 
   private Event() {}
 
+  private Event(Event event) {
+    update(event);
+  }
+
+  public void update(Event event) {
+    this.id = (long) event.getId();
+    this.name = event.getName();
+    this.description = event.getDescription();
+    this.location = event.getLocation();
+    this.startDate = event.getStartDate();
+    this.endDate = event.getEndDate();
+    this.teamSize = event.getTeamSize();
+
+  }
+
   public Long getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  private void setId(Long id) {
     this.id = id;
   }
 
@@ -45,7 +60,7 @@ public class Event implements Serializable {
     return name;
   }
 
-  public void setName(String name) {
+  private void setName(String name) {
     this.name = name;
   }
 
@@ -53,7 +68,7 @@ public class Event implements Serializable {
     return description;
   }
 
-  public void setDescription(String description) {
+  private void setDescription(String description) {
     this.description = description;
   }
 
@@ -61,7 +76,7 @@ public class Event implements Serializable {
     return location;
   }
 
-  public void setLocation(String location) {
+  private void setLocation(String location) {
     this.location = location;
   }
 
@@ -69,7 +84,7 @@ public class Event implements Serializable {
     return startDate;
   }
 
-  public void setStartDate(Date start_date) {
+  private void setStartDate(Date start_date) {
     this.startDate = start_date;
   }
 
@@ -77,7 +92,7 @@ public class Event implements Serializable {
     return endDate;
   }
 
-  public void setEndDate(Date end_date) {
+  private void setEndDate(Date end_date) {
     this.endDate = end_date;
   }
 
@@ -85,7 +100,7 @@ public class Event implements Serializable {
     return teamSize;
   }
 
-  public void setTeamSize(int team_size) {
+  private void setTeamSize(int team_size) {
     this.teamSize = team_size;
   }
 
@@ -99,7 +114,12 @@ public class Event implements Serializable {
     }
 
     protected Builder(Event event) {
-      this.event = event;
+      this.event = new Event(event);
+    }
+
+    public Builder setId(Long id) {
+      event.setId(id);
+      return this;
     }
 
     public Builder setName(String name) {
@@ -151,6 +171,32 @@ public class Event implements Serializable {
       Event event_out = event;
       event = null;
       return event_out;
+    }
+
+    public void clearId() {
+      event.id = null;
+    }
+
+    public void clearName() {
+      event.name = null;
+    }
+
+    public void clearDescription() { event.description = null; }
+
+    public void clearLocation() {
+      event.location = null;
+    }
+
+    public void clearStartDate() {
+      event.startDate = null;
+    }
+
+    public void clearEndDate() {
+      event.endDate = null;
+    }
+
+    public void clearTeamSize() {
+      event.teamSize = 0;
     }
 
     private Date createDate(String date_string) throws ParseException {
