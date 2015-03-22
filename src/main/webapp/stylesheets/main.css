@@ -20,15 +20,38 @@ h1 {
 .error {
     background-color: rosybrown;
  }
- .error_text {
-    color: orange;
-    font-weight: bold;
-}
-
- .test {
+  .test {
     background-color: red;
  }
 
  .hidden {
-    display:none;
+    visibility: hidden;
  }
+
+ .question_div {
+    width:30%;
+    float:left;
+    padding:10px;
+  }
+
+  .error_div {
+    width:40%;
+    float:left;
+    padding:10px;
+ }
+
+ .error_text {
+     color: orange;
+     font-weight: bold;
+ }
+
+.wrapper {
+    width: 50%;
+    height:300PX;
+    z-index: 1;
+}
+.wrapper div {
+    width: 50%;
+    height: 50PX;
+    float: left;
+}

@@ -34,10 +34,11 @@
     }
 %>
 <%--  onsubmit="return validate_form();" --%>
-<script>
-console.log("event id: ${edit_event.id}");
-</script>
-<fmt:formatDate type="date" value="${now}" />
+<fmt:formatDate pattern="MM/dd/yyyy" value="${edit_event.endDate}"
+                var="formatedEndDate"/>
+<fmt:formatDate pattern="MM/dd/yyyy" value="${edit_event.startDate}"
+                var="formatedStartDate"/>
+</p>
 <form method="post" id="event_form"
   <c:if test="${add_event}">
       action="/admin?command=add_event"
@@ -46,42 +47,44 @@ console.log("event id: ${edit_event.id}");
       action="/admin?command=edit_event"
   </c:if>
 >
-    <input id="id" type="hidden" name="eventId" value="${edit_event.id}"
-    <div>
-        <p>Event Name:
-        <div id="name_error" class="hidden"></div>
-        <input id="name" type="text" name="eventName" value="${edit_event.name}"
-               onBlur="validateString(this, 'submit_button')"/>
-    </div>
-    <div>
-        <p>Event Description:
-        <div id="description_error" class="hidden"></div>
-        <input id="description" type="text" name="eventDescription" value="${edit_event.description}"
-               onBlur="validateString(this, 'submit_button')"/>
-    </div>
-    <div>
-        <p>Event Location:
-        <div id="location_error" class="hidden"></div>
-        <input id="location" type="text" name="eventLocation" value="${edit_event.location}"
-               onBlur="validateString(this, 'submit_button')"/>
-    </div>
-    <div>
-        <p>Event Start Date (mm/dd/yyy):
-        <div id="startDate_error" class="hidden"></div>
-        <input id="startDate" type="text" name="eventStartDate" value="${edit_event.startDate}"
-               onBlur="validateDate(this, 'submit_button')"/>
-    </div>
-    <div>
-        <p>Event End Date (mm/dd/yyy):
-        <div id="endDate_error" class="hidden"></div>
-        <input id="endDate" type="text" name="eventEndDate" value="${edit_event.endDate}"
-               onBlur="validateDate(this, 'submit_button')"/>
-    </div>
-    <div>
-        <p>Size of Team for Event:
+    <input id="id" type="hidden" name="eventId" value="${edit_event.id}"/>
+    <div class="wrapper">
+        <div id="name_div">
+            Event Name:
+            <input id="name" type="text" name="eventName" value="${edit_event.name}"
+                   onBlur="validateString(this, 'submit_button')"/>
+        </div>
+        <div id="name_error"></div>
+        <div id="description_div">
+            Event Description:
+            <input id="description" type="text" name="eventDescription" value="${edit_event.description}"
+                   onBlur="validateString(this, 'submit_button')"/>
+        </div>
+        <div id="description_error"></div>
+        <div id="location_div">
+            Event Location:
+            <input id="location" type="text" name="eventLocation" value="${edit_event.location}"
+                   onBlur="validateString(this, 'submit_button')"/>
+        </div>
+        <div id="location_error"></div>
+        <div id="startDate_div">
+            Event Start Date (mm/dd/yyy):
+            <input id="startDate" type="text" name="eventStartDate" value="${formatedStartDate}"
+                   onBlur="validateDate(this, 'submit_button')"/>
+        </div>
+        <div id="startDate_error" ></div>
+        <div id="endDate_div">
+            Event End Date (mm/dd/yyy):
+            <input id="endDate" type="text" name="eventEndDate" value="${formatedEndDate}"
+                   onBlur="validateDate(this, 'submit_button')"/>
+        </div>
+        <div id="endDate_error"></div>
+        <div id="teamSize_div">
+            Size of Team for Event:
+            <input id="teamSize" type="text" name="eventTeamSize" value="${edit_event.teamSize}"
+                   onBlur="validateNumber(this, 'submit_button')"/>
+        </div>
         <div id="teamSize_error" class="hidden"></div>
-        <input id="teamSize" type="text" name="eventTeamSize" value="${edit_event.teamSize}"
-               onBlur="validateNumber(this, 'submit_button')"/>
     </div>
     <div>
         <c:if test="${add_event}">
