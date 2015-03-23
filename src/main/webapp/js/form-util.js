@@ -24,50 +24,96 @@ function isValidDate(dateString)
     return day > 0 && day <= monthLength[month - 1];
 };
 
-function showSubmitButton(buttonId) {
-    if ($( ".error" ).length > 0) {
-        $( "#" + buttonId).prop("disabled",true);
-    } else {
-        $( "#" + buttonId).prop("disabled",false);
-    }
-}
 function setError(elem, message) {
     $( "#" + elem.id ).addClass("error");
-    $( "#" + elem.id + "_error").removeClass("hidden").addClass("error_text").text(message);
+    $( "#" + elem.id.split("_")[0] + "_error").removeClass("hidden").addClass("error_text").text(message);
 }
 
 function removeError(elem) {
     $( "#" + elem.id ).removeClass("error");
-    $( "#" + elem.id + "_error").addClass("hidden").removeClass("error_text");
+    $( "#" + elem.id.split("_")[0] + "_error").addClass("hidden").removeClass("error_text").text("");
 }
 
-function validateDate(elem, buttonId) {
+function validateDate(elem) {
+    console.log("validateDate: " + elem.value);
+    var ret = true
     if (isValidDate(elem.value)) {
         removeError(elem);
     } else {
         setError(elem, "Invalid date");
+        ret = false;
     }
-    showSubmitButton(buttonId);
+    return ret;
 };
 
-function validateString(elem, buttonId) {
-    if (elem.value > 0 || elem.value == "") {
+function validateString(elem) {
+    var ret = true
+    console.log("validateString: " + elem.value);
+    if (elem.value == null || elem.value == "") {
         setError(elem, "invalid entry");
+        ret = false;
     } else {
         removeError(elem);
     }
-    showSubmitButton(buttonId);
+    return ret;
 };
 
-function validateNumber(elem, buttonId) {
+function validateNumber(elem) {
+    var ret = true
+    console.log("validateNumber: " + elem.value);
     if (elem.value == null || elem.value == "" || elem.value <= 0) {
         setError(elem, "Invalid Number");
+        ret = false;
     } else {
         removeError(elem);
     }
-    showSubmitButton(buttonId);
+    return ret;
 };
 
 function log(message) {
-    console.log(5 + 6);
+    console.log(message);
+}
+
+function validateForm(elem_ids) {
+    log("startFormValidation");
+    var idsLength = elem_ids.length;
+    var elementsValid = true;
+    for (var i = 0; i < idsLength; i++) {
+        var id = "#" + elem_ids[i];
+        var elem = $( id )[0];
+        log("validating " + id )
+        switch (elemType(id)) {
+        case 'str':
+            log("validate_form: processing string");
+            if (!validateString(elem)) {
+                elementsValid = false;
+            }
+            break;
+        case 'num':
+            log("validate_form: processing number");
+            if (!validateNumber(elem)) {
+                elementsValid = false;
+            }
+            break;
+        case 'date':
+            log("validate_form: processing date");
+            if (!validateString(elem)) {
+                elementsValid = false;
+            }
+            break;
+        default:
+            alert("element" + id + " has unknown element type");
+            break;
+        }
+    }
+    return elementsValid;
+}
+
+function elemType(id) {
+    var type = "";
+    var parts = id.split("_");
+    if (parts.length >= 0) {
+        type = parts[parts.length - 1];
+    }
+    return type;
 }
