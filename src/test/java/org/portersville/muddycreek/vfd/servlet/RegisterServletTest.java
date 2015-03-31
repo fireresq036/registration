@@ -7,6 +7,7 @@ import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestC
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.VoidWork;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -36,12 +37,13 @@ public class RegisterServletTest {
       Logger.getLogger(AdminServletTest.class.getName());
 
   private static final String NAME = "name";
-  private static final String DESCRIPTION = "description";
-  private static final String LOCATION = "location";
-  private static final String START_DATE_STRING = "6/22/2015";
-  private static final String END_DATE_STRING = "6/22/2015";
-  private static final String TEAM_SIZE = "2";
+  private static final String ADDRESS1 = "123 Test lnn";
+  private static final String ADDRESS2 = "";
+  private static final String CITY = "Prospect";
+  private static final String STATE = "PA";
+  private static final String ZIP = "16000";
   private static final String EMAIL = "you@me.com";
+  private static final String PHONE = "8005551212";
   private static final SimpleDateFormat SDF =
       new SimpleDateFormat("MM/dd/yyyy");
   private static final String AUTH_DOAMIN = "Auth_domain";
@@ -64,13 +66,14 @@ public class RegisterServletTest {
     UserService userService = UserServiceFactory.getUserService();
     user = userService.getCurrentUser();
     req = mock(HttpServletRequest.class);
-    given(req.getParameter("eventId")).willReturn(null);
-    given(req.getParameter("eventName")).willReturn(NAME);
-    given(req.getParameter("eventDescription")).willReturn(DESCRIPTION);
-    given(req.getParameter("eventLocation")).willReturn(LOCATION);
-    given(req.getParameter("eventStartDate")).willReturn(START_DATE_STRING);
-    given(req.getParameter("eventEndDate")).willReturn(END_DATE_STRING);
-    given(req.getParameter("eventTeamSize")).willReturn(TEAM_SIZE);
+    given(req.getParameter("captainAddress1")).willReturn(ADDRESS1);
+    given(req.getParameter("captainAddress2")).willReturn(ADDRESS2);
+    given(req.getParameter("captainCity")).willReturn(CITY);
+    given(req.getParameter("captainState")).willReturn(STATE);
+    given(req.getParameter("captainZip")).willReturn(ZIP);
+    given(req.getParameter("captainName")).willReturn(NAME);
+    given(req.getParameter("captainPhone")).willReturn(PHONE);
+    given(req.getParameter("captainEmail")).willReturn(EMAIL);
   }
 
   @After
@@ -80,14 +83,20 @@ public class RegisterServletTest {
 
   @Test
   public void CreateEvent() throws ParseException {
-    AdminServlet servlet = new AdminServlet();
-    Event event = servlet.eventFromRequest(req);
-    assertNull(event.getId());
-    assertEquals(NAME, event.getName());
-    assertEquals(LOCATION, event.getLocation());
-    assertEquals(DESCRIPTION, event.getDescription());
-    assertEquals(SDF.parse(START_DATE_STRING), event.getStartDate());
-    assertEquals(SDF.parse(END_DATE_STRING), event.getEndDate());
-    assertEquals(new Integer(TEAM_SIZE), new Integer(event.getTeamSize()));
+    ObjectifyService.run(new VoidWork() {
+      public void vrun() {
+        RegisterServlet servlet = new RegisterServlet();
+        Person person = servlet.createCaptain(req, user);
+        assertNull(person.getId());
+        assertEquals(NAME, person.getName());
+        assertEquals(PHONE, person.getPhone());
+        assertEquals(EMAIL, person.getEmail());
+        assertEquals(ADDRESS1, person.getAddress().getStreet1());
+        assertEquals(ADDRESS2, person.getAddress().getStreet2());
+        assertEquals(CITY, person.getAddress().getCity());
+        assertEquals(STATE, person.getAddress().getState());
+        assertEquals(ZIP, person.getAddress().getZip());
+      }
+    });
   }
 }
