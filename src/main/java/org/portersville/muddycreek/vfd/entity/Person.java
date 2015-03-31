@@ -2,24 +2,37 @@ package org.portersville.muddycreek.vfd.entity;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Created by mark on 3/12/15.
  */
 @Entity
-public class Person {
+public class Person implements Serializable, EntityI {
+  private static final Logger log =
+      Logger.getLogger(Person.class.getName());
   @Id
   Long id;
   String name;
-  List<Address> address = new ArrayList<Address>();
-  List<String> email = new ArrayList<String>();
-  List<String> phone = new ArrayList<String>();
+  Address address;
+  @Index
+  String email;
+  String phone;
 
   private Person() {
     id = null;
+  }
+  private Person(Person per) {
+    id = per.getId();
+    name = per.getName();
+    assert (per.getAddress() != null);
+    address = Address.newBuilder(per.getAddress()).build();
+    email = per.getEmail();
+    phone = per.getPhone();
   }
 
   public static Builder newBuilder() {
@@ -30,14 +43,26 @@ public class Person {
     return new Builder(person);
   }
 
+  @Override
   public Long getId() {
     return id;
+  }
+
+  @Override
+  public <T> void update(T entity) {
+    Person person = (Person)entity;
+    this.id = person.getId();
+    this.name = person.getName();
+    this.address = Address.newBuilder(person.getAddress()).build();
+    this.email = person.getEmail();
+    this.phone = person.getPhone();
   }
 
   public void setId(Long id) {
     this.id = id;
   }
 
+  @Override
   public String getName() {
     return name;
   }
@@ -46,27 +71,27 @@ public class Person {
     this.name = name;
   }
 
-  public List<Address> getAddress() {
+  public Address getAddress() {
     return address;
   }
 
-  public void setAddress(List<Address> address) {
+  public void setAddress(Address address) {
     this.address = address;
   }
 
-  public List<String> getEmail() {
+  public String getEmail() {
     return email;
   }
 
-  public void setEmail(List<String> email) {
+  public void setEmail(String email) {
     this.email = email;
   }
 
-  public List<String> getPhone() {
+  public String getPhone() {
     return phone;
   }
 
-  public void setPhone(List<String> phone) {
+  public void setPhone(String phone) {
     this.phone = phone;
   }
 
@@ -78,7 +103,7 @@ public class Person {
     }
 
     protected Builder(Person person) {
-      this.person = person;
+      this.person = new Person(person);
     }
 
     public Builder setName(String name) {
@@ -86,18 +111,18 @@ public class Person {
       return this;
     }
 
-    public Builder addAddress(Address address) {
-      person.getAddress().add(address);
+    public Builder setAddress(Address address) {
+      person.setAddress(address);
       return this;
     }
 
-    public Builder addEmail(String email) {
-      person.getEmail().add(email);
+    public Builder setEmail(String email) {
+      person.setEmail(email);
       return this;
     }
 
-    public Builder addPhone(String phone) {
-      person.getPhone().add(phone);
+    public Builder setPhone(String phone) {
+      person.setPhone(phone);
       return this;
     }
 

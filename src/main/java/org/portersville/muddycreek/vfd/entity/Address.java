@@ -3,12 +3,12 @@ package org.portersville.muddycreek.vfd.entity;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
+import java.io.Serializable;
+
 /**
  * Created by mark on 3/12/15.
  */
-@Entity
-public class Address {
-  @Id
+public class Address implements Serializable {
   Long id;
   String street1;
   String street2;
@@ -18,6 +18,15 @@ public class Address {
 
   protected Address() {
     id = null;
+  }
+
+  protected Address(Address addr) {
+    id = addr.getId();
+    street1 = addr.getStreet1();
+    street2 = addr.getStreet2();
+    city = addr.getCity();
+    state = addr.getState();
+    zip = addr.getZip();
   }
 
   public static Builder newBuilder() {
@@ -81,7 +90,7 @@ public class Address {
     protected Builder() { this.address = new Address(); }
 
     protected Builder(Address address) {
-      this.address = address;
+      this.address = new Address(address);
     }
 
     public Builder setStreet1(String street1) {

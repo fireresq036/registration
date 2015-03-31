@@ -4,12 +4,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Created by mark on 3/12/15.
  */
 public class PersonTest {
+  private static final Logger log =
+      Logger.getLogger(PersonTest.class.getName());
   private static final String NAME = "Name";
   private static final String EMAIL = "you@me";
   private static final String PHONE = "8005551212";
@@ -22,7 +28,7 @@ public class PersonTest {
 
   @Before
   public void setUp() {
-    Address address = Address.newBuilder()
+    address = Address.newBuilder()
         .setStreet1(STREET_1)
         .setStreet2(STREET_2)
         .setCity(CITY)
@@ -40,37 +46,37 @@ public class PersonTest {
   public void testCreate () {
     Person person = Person.newBuilder()
         .setName(NAME)
-        .addAddress(address)
-        .addEmail(EMAIL)
-        .addPhone(PHONE)
+        .setAddress(address)
+        .setEmail(EMAIL)
+        .setPhone(PHONE)
         .build();
+    assertNotNull(person.getAddress());
     assertEquals(NAME, person.getName());
-    assertEquals(1, person.getEmail().size());
-    assertEquals(EMAIL, person.getEmail().get(0));
-    assertEquals(1, person.getPhone().size());
-    assertEquals(PHONE, person.getPhone().get(0));
+    assertEquals(EMAIL, person.getEmail());
+    assertEquals(PHONE, person.getPhone());
   }
 
   @Test
   public void testCopy () {
     Person person = Person.newBuilder()
         .setName(NAME)
-        .addAddress(address)
-        .addEmail(EMAIL)
-        .addPhone(PHONE)
+        .setAddress(address)
+        .setEmail(EMAIL)
+        .setPhone(PHONE)
         .build();
     String new_name = NAME + "1";
     String new_email = EMAIL + "1";
     Person person2 = Person.newBuilder(person)
         .setName(new_name)
-        .addEmail(new_email)
+        .setEmail(new_email)
         .build();
-    assertEquals(new_name, person.getName());
-    assertEquals(2, person.getEmail().size());
-    assertEquals(EMAIL, person.getEmail().get(0));
-    assertEquals(new_email, person.getEmail().get(1));
-    assertEquals(1, person.getPhone().size());
-    assertEquals(PHONE, person.getPhone().get(0));
+    assertEquals(new_name, person2.getName());
+    assertEquals(new_email, person2.getEmail());
+    assertEquals(person.getPhone(), person2.getPhone());
+    assertEquals(PHONE, person2.getPhone());
+    assertEquals(NAME, person.getName());
+    assertEquals(EMAIL, person.getEmail());
+    assertEquals(PHONE, person.getPhone());
 
   }
 }

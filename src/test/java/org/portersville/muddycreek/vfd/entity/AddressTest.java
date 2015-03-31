@@ -51,5 +51,10 @@ public class AddressTest {
     assertEquals(new_city, address2.getCity());
     assertEquals(STATE, address2.getState());
     assertEquals(ZIP, address2.getZip());
+    assertEquals(STREET_1, address.getStreet1());
+    assertEquals(STREET_2, address.getStreet2());
+    assertEquals(CITY, address.getCity());
+    assertEquals(STATE, address.getState());
+    assertEquals(ZIP, address.getZip());
   }
 }

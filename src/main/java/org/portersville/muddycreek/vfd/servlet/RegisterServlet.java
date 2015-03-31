@@ -4,6 +4,7 @@ import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import org.portersville.muddycreek.vfd.datastore.EntityProcessing;
 import org.portersville.muddycreek.vfd.entity.Address;
 import org.portersville.muddycreek.vfd.entity.Person;
 import org.portersville.muddycreek.vfd.entity.Team;
@@ -23,7 +24,8 @@ import java.util.logging.Logger;
  */
 public class RegisterServlet extends HttpServlet {
   private static final long serialVersionUID = 101L;
-  private static final Logger log = Logger.getLogger(RegisterServlet.class.getName());
+  private static final Logger log =
+      Logger.getLogger(RegisterServlet.class.getName());
   private static final String CONFIRM_JSP = "/confirm.jsp";
 
   @Override
@@ -72,10 +74,9 @@ public class RegisterServlet extends HttpServlet {
         .build();
     Person captain = Person.newBuilder()
         .setName(captainName)
-        .addAddress(address)
-        .addEmail(captainEmail)
-        .addEmail("test")
-        .addPhone(captainPhone)
+        .setAddress(address)
+        .setEmail(captainEmail)
+        .setPhone(captainPhone)
         .build();
     Team team = Team.newBuilder()
         .setName(teamName)
@@ -87,5 +88,27 @@ public class RegisterServlet extends HttpServlet {
         getServletConfig().getServletContext().
             getRequestDispatcher(CONFIRM_JSP);
     reqDispatcher.forward(req, resp);
+  }
+
+  protected Person createCaptain(HttpServletRequest req, User user) {
+    Address.Builder addrBuilder = Address.newBuilder()
+        .setStreet1(req.getParameter("captainAddress1"))
+        .setStreet2(req.getParameter("captainAddress2"))
+        .setCity(req.getParameter("captainCity"))
+        .setState(req.getParameter("captainState"))
+        .setZip(req.getParameter("captainZip"));
+    Person captain = Person.newBuilder()
+        .setName(req.getParameter("captainName"))
+        .setEmail(req.getParameter("captainEmail"))
+        .setPhone(req.getParameter("captainPhone"))
+        .setAddress(addrBuilder.build())
+        .build();
+    addIfMising(captain, user);
+    return captain;
+  }
+
+  private void addIfMising(Person captain, User user) {
+    EntityProcessing<Person> processor = new EntityProcessing<>(Person.class);
+    processor.entityWithFilter("email", captain.getEmail());
   }
 }

@@ -4,6 +4,7 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -11,9 +12,9 @@ import java.util.Date;
  * Created by mark on 3/10/15.
  */
 @Entity
-public class Log {
+public class Log implements Serializable, EntityI {
   public enum EntityType {
-    EVENT, LOG
+    EVENT, LOG, PERSON, TEAM
   }
   @Id
   Long logKey;
@@ -35,6 +36,21 @@ public class Log {
 
   public static Builder newBuilder(Log log) {
     return new Builder(log);
+  }
+
+  @Override
+  public Long getId() {
+    return getLogKey();
+  }
+
+  @Override
+  public <T> void update(T entity) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public String getName() {
+    return "Log";
   }
 
   public Long getLogKey() { return logKey;  }

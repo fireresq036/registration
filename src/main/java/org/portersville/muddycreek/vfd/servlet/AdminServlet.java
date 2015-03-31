@@ -3,6 +3,8 @@ package org.portersville.muddycreek.vfd.servlet;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import org.portersville.muddycreek.vfd.datastore.EntityProcessing;
+import org.portersville.muddycreek.vfd.datastore.EventProcessing;
 import org.portersville.muddycreek.vfd.entity.Event;
 
 import javax.servlet.RequestDispatcher;
@@ -35,7 +37,6 @@ public class AdminServlet extends HttpServlet {
   private static final String GET_USERS = "get_users";
   private static final String EDIT_EVENT_QUERY = "edit_event_query";
   private static final String EDIT_EVENT = "edit_event";
-  private EventProcessing eventProcessor = new EventProcessing();
 
   public AdminServlet() {
     super();
@@ -50,6 +51,7 @@ public class AdminServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws IOException, ServletException {
+    EntityProcessing<Event> entityProcessor = new EntityProcessing(Event.class);
     String forwardTo = ADMIN_JSP;
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
@@ -66,7 +68,7 @@ public class AdminServlet extends HttpServlet {
     } else {
       if (command.equalsIgnoreCase(GET_EVENTS)) {
         log.log(Level.INFO, GET_EVENTS);
-        if (eventProcessor.loadEvents().size() > 0) {
+        if (entityProcessor.loadEntities().size() > 0) {
           forwardTo = ADMIN_EVENT_LIST_JSP;
         } else {
           req.setAttribute("edit_event", Event.newBuilder().build());
@@ -83,7 +85,7 @@ public class AdminServlet extends HttpServlet {
       } else if (command.equalsIgnoreCase(ADD_EVENT)) {
         log.log(Level.INFO, ADD_EVENT);
         try {
-          eventProcessor.saveEvent(eventFromRequest(req), user);
+          entityProcessor.saveEntity(eventFromRequest(req), user);
         } catch (ParseException e) {
           req.setAttribute("error_string", builder.toString());
         }
@@ -95,14 +97,14 @@ public class AdminServlet extends HttpServlet {
           req.setAttribute("error_string", "No Key specified on edit");
         } else {
           Long event_id = new Long(req.getParameter("editKey"));
-          req.setAttribute("edit_event", eventProcessor.eventFromId(event_id));
+          req.setAttribute("edit_event", entityProcessor.entityFromId(event_id));
           req.setAttribute("add_event", false);
         }
         forwardTo = ADMIN_EVENT_EDIT_JSP;
       } else if (command.equalsIgnoreCase(EDIT_EVENT)){
         log.log(Level.INFO, EDIT_EVENT);
         try {
-          eventProcessor.updateEvent(eventFromRequest(req), user);
+          entityProcessor.updateEntity(eventFromRequest(req), user);
         } catch (ParseException e) {
           e.printStackTrace();
         }
@@ -116,7 +118,7 @@ public class AdminServlet extends HttpServlet {
         forwardTo = ADMIN_JSP;
       }
     }
-    List<Event> events = eventProcessor.loadEvents();
+    List<Event> events = entityProcessor.loadEntities();
     req.setAttribute("known_events", events);
     ServletConfig config = getServletConfig();
     ServletContext context = config.getServletContext();

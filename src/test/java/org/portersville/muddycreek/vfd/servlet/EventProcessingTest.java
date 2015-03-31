@@ -1,7 +1,5 @@
 package org.portersville.muddycreek.vfd.servlet;
 
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
@@ -10,24 +8,16 @@ import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.google.appengine.tools.development.testing.LocalUserServiceTestConfig;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.VoidWork;
-import com.googlecode.objectify.cmd.Query;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.portersville.muddycreek.vfd.entity.Address;
+import org.portersville.muddycreek.vfd.datastore.EventProcessing;
 import org.portersville.muddycreek.vfd.entity.Event;
 import org.portersville.muddycreek.vfd.entity.Log;
-import org.portersville.muddycreek.vfd.entity.Person;
-import org.portersville.muddycreek.vfd.entity.Team;
 import org.portersville.muddycreek.vfd.util.Entities;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.Closeable;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,9 +32,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class EventProcessingTest {
   private static final Logger log =

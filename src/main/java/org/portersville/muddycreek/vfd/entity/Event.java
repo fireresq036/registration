@@ -13,7 +13,7 @@ import java.util.Date;
  * Entity class for events at Portersville Muddycreek VFD
  */
 @Entity
-public class Event implements Serializable {
+public class Event implements Serializable, EntityI {
   @Id
   private Long id;
   private String name;
@@ -37,7 +37,23 @@ public class Event implements Serializable {
     update(event);
   }
 
-  public void update(Event event) {
+//  public void update(Event event) {
+//    this.id = (long) event.getId();
+//    this.name = event.getName();
+//    this.description = event.getDescription();
+//    this.location = event.getLocation();
+//    this.startDate = event.getStartDate();
+//    this.endDate = event.getEndDate();
+//    this.teamSize = event.getTeamSize();
+//  }
+
+  public Long getId() {
+    return id;
+  }
+
+  @Override
+  public <T> void update(T entity) {
+    Event event = (Event) entity;
     this.id = (long) event.getId();
     this.name = event.getName();
     this.description = event.getDescription();
@@ -46,10 +62,6 @@ public class Event implements Serializable {
     this.endDate = event.getEndDate();
     this.teamSize = event.getTeamSize();
 
-  }
-
-  public Long getId() {
-    return id;
   }
 
   private void setId(Long id) {

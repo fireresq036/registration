@@ -20,7 +20,6 @@ import java.util.logging.Logger;
  */
 public class StartupServlet  extends HttpServlet {
   static {
-    ObjectifyService.register(Address.class);
     ObjectifyService.register(Event.class);
     ObjectifyService.register(Log.class);
     ObjectifyService.register(Person.class);
