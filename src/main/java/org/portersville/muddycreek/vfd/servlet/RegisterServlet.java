@@ -1,9 +1,9 @@
 package org.portersville.muddycreek.vfd.servlet;
 
-import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.googlecode.objectify.cmd.Query;
 import org.portersville.muddycreek.vfd.datastore.EntityProcessing;
 import org.portersville.muddycreek.vfd.entity.Address;
 import org.portersville.muddycreek.vfd.entity.Person;
@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,6 +26,7 @@ public class RegisterServlet extends HttpServlet {
   private static final Logger log =
       Logger.getLogger(RegisterServlet.class.getName());
   private static final String CONFIRM_JSP = "/confirm.jsp";
+  private static final String REGISTER_JSP = "/register.jsp";
 
   @Override
   public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -34,63 +34,47 @@ public class RegisterServlet extends HttpServlet {
     UserService userService = UserServiceFactory.getUserService();
     User user = userService.getCurrentUser();
 
-    String teamName = req.getParameter("teamName");
-    log.log(Level.INFO, "processing teamName: {0}", new String[]{teamName});
-    Key teamKey = KeyFactory.createKey("Team", teamName);
-    String captainName = req.getParameter("captainName");
-    String captainEmail = req.getParameter("captainEmail");
-    String captainPhone = req.getParameter("captainPhone");
-    String captainAddress1 = req.getParameter("captainAddress1");
-    String captainAddress2 = req.getParameter("captainAddress2");
-    String captainCity = req.getParameter("captainCity");
-    String captainState = req.getParameter("captainState");
-    String captainZip = req.getParameter("captainZip");
-
-    Date date = new Date();
-    Entity teamData = new Entity("TeamInformation", teamKey);
-    if (user != null) {
-      teamData.setProperty("author_id", user.getUserId());
-      teamData.setProperty("author_email", user.getEmail());
+    Person captain = findOrAddCaptain(req, user);
+    Team team = createTeam(req, captain);
+    String forwardTo = CONFIRM_JSP;
+    if (findTeam(team)) {
+      forwardTo = REGISTER_JSP;
+      req.setAttribute("Error", true);
+    } else {
+      addTeam(team, user);
     }
-    teamData.setProperty("date", date);
-    teamData.setProperty("captain_name", captainName);
-    teamData.setProperty("captain_email", captainEmail);
-    teamData.setProperty("captain_phone", captainPhone);
-    teamData.setProperty("captain_address1", captainAddress1);
-    teamData.setProperty("captain_address2", captainAddress2);
-    teamData.setProperty("captain_city", captainCity);
-    teamData.setProperty("captain_state", captainState);
-    teamData.setProperty("captain_Zip", captainZip);
-    teamData.setProperty("team_name", teamName);
 
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(teamData);
-    Address address = Address.newBuilder()
-        .setStreet1(captainAddress1)
-        .setStreet2(captainAddress2)
-        .setCity(captainCity)
-        .setState(captainState)
-        .setZip(captainZip)
-        .build();
-    Person captain = Person.newBuilder()
-        .setName(captainName)
-        .setAddress(address)
-        .setEmail(captainEmail)
-        .setPhone(captainPhone)
-        .build();
-    Team team = Team.newBuilder()
-        .setName(teamName)
-        .setCaptain(captain)
-        .build();
     req.setAttribute("team_data", team);
-    log.log(Level.INFO, "forwarding to {0}", CONFIRM_JSP);
+    log.log(Level.INFO, "forwarding to {0}", forwardTo);
     RequestDispatcher reqDispatcher =
         getServletConfig().getServletContext().
-            getRequestDispatcher(CONFIRM_JSP);
+            getRequestDispatcher(forwardTo);
     reqDispatcher.forward(req, resp);
   }
 
-  protected Person createCaptain(HttpServletRequest req, User user) {
+  protected Team createTeam(HttpServletRequest req, Person captain) {
+    return Team.newBuilder()
+        .setName(req.getParameter("teamName"))
+            .setCaptain(captain)
+            .build();
+  }
+
+  protected boolean findTeam(Team team) {
+    boolean found = false;
+    EntityProcessing<Team> processor = new EntityProcessing<>(Team.class);
+    Query<Team> pQuery = processor.entityWithFilter("name", team.getName());
+    for(Team person : pQuery) {
+      found = true;
+    }
+    return found;
+  }
+
+  protected void addTeam(Team team, User user) {
+    EntityProcessing<Team> processor = new EntityProcessing<>(Team.class);
+    processor.saveEntity(team, user);
+  }
+
+  protected Person findOrAddCaptain(HttpServletRequest req, User user) {
     Address.Builder addrBuilder = Address.newBuilder()
         .setStreet1(req.getParameter("captainAddress1"))
         .setStreet2(req.getParameter("captainAddress2"))
@@ -103,12 +87,21 @@ public class RegisterServlet extends HttpServlet {
         .setPhone(req.getParameter("captainPhone"))
         .setAddress(addrBuilder.build())
         .build();
-    addIfMising(captain, user);
-    return captain;
+    return addIfMising(captain, user);
   }
 
-  private void addIfMising(Person captain, User user) {
+  protected Person addIfMising(Person captain, User user) {
+    boolean found = false;
+    Person foundCaptain = null;
     EntityProcessing<Person> processor = new EntityProcessing<>(Person.class);
-    processor.entityWithFilter("email", captain.getEmail());
+    Query<Person> pQuery = processor.entityWithFilter("email", captain.getEmail());
+    for(Person person : pQuery) {
+      found = true;
+      foundCaptain = person;
+    }
+    if (!found) {
+      processor.saveEntity(captain, user);
+    }
+    return found?foundCaptain:captain;
   }
 }

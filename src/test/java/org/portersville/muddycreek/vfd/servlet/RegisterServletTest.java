@@ -12,19 +12,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.portersville.muddycreek.vfd.datastore.EventProcessing;
-import org.portersville.muddycreek.vfd.entity.Event;
 import org.portersville.muddycreek.vfd.entity.Log;
 import org.portersville.muddycreek.vfd.entity.Person;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
@@ -86,8 +83,8 @@ public class RegisterServletTest {
     ObjectifyService.run(new VoidWork() {
       public void vrun() {
         RegisterServlet servlet = new RegisterServlet();
-        Person person = servlet.createCaptain(req, user);
-        assertNull(person.getId());
+        Person person = servlet.findOrAddCaptain(req, user);
+        assertNotNull(person.getId());
         assertEquals(NAME, person.getName());
         assertEquals(PHONE, person.getPhone());
         assertEquals(EMAIL, person.getEmail());

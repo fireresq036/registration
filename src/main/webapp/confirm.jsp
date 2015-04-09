@@ -6,17 +6,17 @@
 
 <%
 Team team = (Team) request.getAttribute("team_data");
-pageContext.setAttribute("capt_email", team.getCaptain().getEmail().get(0));
-pageContext.setAttribute("capt_phone", team.getCaptain().getPhone().get(0));
-pageContext.setAttribute("capt_street1", team.getCaptain().getAddress().get(0).getStreet1());
-pageContext.setAttribute("capt_street2", team.getCaptain().getAddress().get(0).getStreet2());
+pageContext.setAttribute("capt_email", team.getCaptain().getEmail());
+pageContext.setAttribute("capt_phone", team.getCaptain().getPhone());
+pageContext.setAttribute("capt_street1", team.getCaptain().getAddress().getStreet1());
+pageContext.setAttribute("capt_street2", team.getCaptain().getAddress().getStreet2());
 boolean has_street2 = true;
-if (team.getCaptain().getAddress().get(0).getStreet2().length() <= 0) {
+if (team.getCaptain().getAddress().getStreet2().length() <= 0) {
     has_street2 = false;
 }
-pageContext.setAttribute("capt_city", team.getCaptain().getAddress().get(0).getCity());
-pageContext.setAttribute("capt_state", team.getCaptain().getAddress().get(0).getState());
-pageContext.setAttribute("capt_zip", team.getCaptain().getAddress().get(0).getZip());
+pageContext.setAttribute("capt_city", team.getCaptain().getAddress().getCity());
+pageContext.setAttribute("capt_state", team.getCaptain().getAddress().getState());
+pageContext.setAttribute("capt_zip", team.getCaptain().getAddress().getZip());
 %>
 
 <head>

@@ -4,6 +4,7 @@ import com.googlecode.objectify.Key;
 import com.googlecode.objectify.Ref;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 import com.googlecode.objectify.annotation.Load;
 import com.googlecode.objectify.annotation.Parent;
 import org.apache.commons.lang.NotImplementedException;
@@ -24,6 +25,7 @@ public class Team implements Serializable, EntityI {
       Logger.getLogger(Team.class.getName());
   @Id
   protected Long id;
+  @Index
   protected String name;
   @Load
   @Parent
