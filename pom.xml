@@ -45,7 +45,7 @@
   </scm>
 
   <properties>
-    <appengine.app.version>alpha-007</appengine.app.version>
+    <appengine.app.version>alpha-008</appengine.app.version>
     <appengine.app.project>vocal-eon-639</appengine.app.project>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <app.appengine.plugin.version>1.9.18</app.appengine.plugin.version>
@@ -221,6 +221,11 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
         <version>3.0.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.7</version>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
